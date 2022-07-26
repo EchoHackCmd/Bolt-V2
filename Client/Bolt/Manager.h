@@ -2,6 +2,7 @@
 #define CLIENT_BOLT_MANAGER
 
 #include "../Utils/Utils.h"
+#include "../SDK/Minecraft.h"
 
 class Client;
 
