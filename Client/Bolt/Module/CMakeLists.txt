@@ -1,3 +1,5 @@
+target_sources(Bolt PRIVATE Module.cpp)
+
 add_subdirectory(Combat)
 add_subdirectory(Movement)
 add_subdirectory(Player)
