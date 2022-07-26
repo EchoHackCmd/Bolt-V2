@@ -160,7 +160,7 @@ auto hookPresentD3D12(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flag
             ID3D12Resource* pBackBuffer = nullptr;
 
             frameContext[i].main_render_target_descriptor = rtvHandle;
-            ppSwapChain->GetBuffer(i, IID_PPV_ARGS(&pBackBuffer));
+            ppSwapChain->GetBuffer((UINT)i, IID_PPV_ARGS(&pBackBuffer));
             d3d12Device->CreateRenderTargetView(pBackBuffer, nullptr, rtvHandle);
             frameContext[i].main_render_target_resource = pBackBuffer;
             rtvHandle.ptr += rtvDescriptorSize;
