@@ -2,6 +2,7 @@
 #include "Category/Category.h"
 
 Manager::Manager(Client* client) {
+	
 	this->client = client;
 	this->isRunning = true;
 
@@ -10,11 +11,20 @@ Manager::Manager(Client* client) {
 	this->initCategories();
 	this->initModules();
 	this->baseTick();
+
 };
 
 auto Manager::initHooks(void) -> void {
 	
-	//
+	if(MH_Initialize() == MH_OK) {
+
+		//
+
+	} else {
+
+		Util::debugLog("MinHook failed to initialize!");
+
+	};
 
 };
 
@@ -132,5 +142,12 @@ auto Manager::baseTick(void) -> void {
 		Sleep(1);
 
 	};
+
+	MH_DisableHook(MH_ALL_HOOKS);
+	
+	Sleep(100);
+
+	MH_Uninitialize();
+	FreeLibraryAndExitThread(Util::getDll(), 1);
 
 };
