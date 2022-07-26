@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <Windows.h>
+#include <MinHook.h>
 #include <assert.h>
 #include <fstream>
 #include <string>
