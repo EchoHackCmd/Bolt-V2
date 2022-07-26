@@ -12,3 +12,11 @@ auto Client::init(void) -> void {
     this->manager = new Manager(this);
 
 };
+
+auto Client::uninject(void) -> void {
+
+    auto hMod = Util::getDll();
+
+    FreeLibraryAndExitThread(hMod, 1);
+
+};
