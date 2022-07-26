@@ -12,6 +12,7 @@ enum CategoryType;
 class Manager {
 private:
     Client* client = nullptr;
+public:
     bool isRunning = false;
 public:
     std::vector<Hook*> hooks;
