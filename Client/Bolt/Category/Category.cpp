@@ -1,5 +1,6 @@
 #include "Category.h"
 #include "../Manager.h"
+#include "../Module/Module.h"
 
 Category::Category(CategoryType type, Manager* mgr) {
 
