@@ -10,17 +10,18 @@
 #include <cassert>
 #include <vector>
 #include <map>
+
 #define INRANGE(x,a,b)   (x >= a && x <= b)
 #define GET_BYTE( x )    (GET_BITS(x[0]) << 4 | GET_BITS(x[1]))
 #define GET_BITS( x )    (INRANGE((x&(~0x20)),'A','F') ? ((x&(~0x20)) - 'A' + 0xa) : (INRANGE(x,'0','9') ? x - '0' : 0))
+
 class Util {
 public:
 	static auto getDll(void)->HMODULE;
 	static auto getDebugDir(void)->std::string;
 public:
 	static auto debugLog(std::string) -> void;
-	static auto FindSig(const char* szSignature)->uintptr_t;
-
+	static auto findSig(const char* szSignature)->uintptr_t;
 public:
 	//this is from floppy ty :)
 	static inline void nopBytes(void* dst, unsigned int size) {
