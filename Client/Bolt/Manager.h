@@ -20,7 +20,8 @@ public:
 public:
     Manager(Client*);
 public:
-    std::map<int, Category*> categories;
+    std::map<CategoryType, Category*> categories;
+public:
     auto initCategories(void) -> void;
     auto getCategory(CategoryType) -> std::pair<std::string, Category*>;
 public:
