@@ -7,7 +7,7 @@ include(CTest)
 enable_testing()
 
 add_library(Bolt SHARED)
-target_sources(Bolt PRIVATE Bolt.cpp)
+target_sources(Bolt PRIVATE Bolt.cpp "Client/Util/Util.cpp" "Client/Util/Util.h")
 
 add_subdirectory(Client)
 add_subdirectory(Includes)

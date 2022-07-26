@@ -1,4 +1,5 @@
 .vscode
 build
 .idea
+.vs/
 cmake-build-release-visual-studio
