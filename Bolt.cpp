@@ -1,12 +1,8 @@
 #include "Client/Client.h"
-#include <Windows.h>
 
-auto init(HMODULE hMod) -> void {
+auto init(void) -> void {
 
     auto client = new Client("Bolt-V2");
-
-    Sleep(5000);
-    FreeLibraryAndExitThread(hMod, 1);
 
 };
 
