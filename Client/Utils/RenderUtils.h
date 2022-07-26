@@ -29,6 +29,8 @@
 #include "../../Includes/imgui/imgui_impl_dx11.h"
 #include "../../Includes/imgui/imgui.h"
 
+#include "../../Includes/kiero/kiero.h"
+
 enum SwapChain_DeviceType { INVALID_DEVICE_TYPE, D3D11, D3D12 };
 
 class RenderUtils {

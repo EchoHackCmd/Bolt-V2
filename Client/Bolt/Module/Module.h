@@ -21,6 +21,8 @@ public:
     virtual auto onTick(void) -> void {};
     virtual auto onEnable(void) -> void {};
     virtual auto onDisable(void) -> void {};
+public:
+    virtual auto onRender(void) -> void {};
 };
 
 #endif /* CLIENT_BOLT_MODULE_MODULE */

@@ -145,11 +145,11 @@ auto Manager::baseTick(void) -> void {
 
 	};
 
-	MH_DisableHook(MH_ALL_HOOKS);
-	
-	Sleep(100);
-
+	kiero::shutdown();
 	MH_Uninitialize();
+
+	Sleep(100);
+	
 	FreeLibraryAndExitThread(Utils::getDll(), 1);
 
 };
