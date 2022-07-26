@@ -1,6 +1,10 @@
 #ifndef CLIENT_BOLT_MANAGER
 #define CLIENT_BOLT_MANAGER
-#include "../Client.h"
+
+#include "../Util/Util.h"
+
+class Client;
+
 class Manager {
 private:
     Client* client = nullptr;
