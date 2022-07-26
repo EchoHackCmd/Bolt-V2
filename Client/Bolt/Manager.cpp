@@ -65,8 +65,54 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 };
 
+#include "Module/Other/TestModule.h"
+
 auto Manager::initModules(void) -> void {
 	
-	//
+	/* Combat */
+
+		
+		
+		/* WIP */
+
+	
+	
+	/* Movement */
+
+		
+		
+		/* WIP */
+	
+	
+	
+	/* Player */
+
+		
+		
+		/* WIP */
+	
+	
+	
+	/* Render */
+
+		
+		
+		/* WIP */
+	
+
+	
+	/* World */
+
+		
+		
+		/* WIP */
+
+	
+	
+	/* Other */
+
+	
+	new TestModule(this->categories[CategoryType::Other]);
+	
 
 };
