@@ -2,7 +2,6 @@
 #define CLIENT_BOLT_MANAGER
 
 #include "../Util/Util.h"
-
 class Client;
 class Category;
 enum CategoryType;
