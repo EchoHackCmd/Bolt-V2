@@ -23,6 +23,8 @@ public:
 public:
     Category(CategoryType, Manager*);
 public:
+    auto baseTick(void) -> void;
+public:
     auto getName(void) -> std::string;
     auto addModule(Module*) -> void;
 };
