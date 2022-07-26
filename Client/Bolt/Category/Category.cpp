@@ -51,3 +51,16 @@ auto Category::addModule(Module* mod) -> void {
     return this->modules.push_back(mod);
 
 };
+
+auto Category::getModule(std::string name) -> Module* {
+
+    for(auto mod : this->modules) {
+
+        if(mod->name.rfind(name) != std::string::npos)
+            return mod;
+
+    };
+
+    return nullptr;
+
+};
