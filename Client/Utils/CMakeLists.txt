@@ -1,1 +1,4 @@
-target_sources(Bolt PRIVATE Utils.cpp)
+target_sources(Bolt PRIVATE
+    "Utils.cpp"
+        "RenderUtils.cpp"
+)
