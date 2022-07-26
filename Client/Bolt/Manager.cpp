@@ -29,6 +29,40 @@ auto Manager::initCategories(void) -> void {
 		CategoryType currType = static_cast<CategoryType>(First);
 		this->categories[currType] = new Category(currType, this);
 
+		Util::debugLog("Category Initialized: " + this->categories[currType]->getName());
+
 	};
+
+};
+
+auto Manager::getCategory(CategoryType type) -> std::string {
+
+	auto res = std::string("Unknown");
+	
+	switch(type) {
+
+		case CategoryType::Combat:
+			res = "Combat";
+		break;
+
+		case CategoryType::Movement:
+			res = "Movement";
+		break;
+
+		case CategoryType::Player:
+			res = "Player";
+		break;
+
+		case CategoryType::Render:
+			res = "Render";
+		break;
+
+		case CategoryType::World:
+			res = "World";
+		break;
+
+	};
+
+	return res;
 
 };
