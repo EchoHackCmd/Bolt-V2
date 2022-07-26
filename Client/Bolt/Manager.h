@@ -14,6 +14,7 @@ private:
     Client* client = nullptr;
 public:
     bool isRunning = false;
+    std::map<std::string, ImFont*> fonts;
 public:
     std::vector<Hook*> hooks;
     auto initHooks(void) -> void;
