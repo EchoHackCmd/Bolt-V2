@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <fstream>
 #include <string>
+#include <map>
 
 class Util {
 public:
