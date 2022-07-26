@@ -14,11 +14,13 @@ Manager::Manager(Client* client) {
 
 };
 
+#include "Hook/Hooks/SwapChain/SwapChain.h"
+
 auto Manager::initHooks(void) -> void {
 	
 	if(MH_Initialize() == MH_OK) {
 
-		//
+		new SwapChain_Hook(this);
 
 	} else {
 
