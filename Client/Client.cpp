@@ -1,6 +1,8 @@
 #include "Client.h"
 
 Client::Client(std::string name) {
+
+    Util::debugLog("Initializing with name: " + name);
     
     this->name = name;
     this->init();
