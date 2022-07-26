@@ -16,9 +16,9 @@ auto TestModule::onTick(void) -> void {
             auto cat = mgr->getCategory(type).second;
 
             if(cat == nullptr)
-                Util::debugLog(category->getName());
+                Utils::debugLog(category->getName());
             else
-                Util::debugLog(cat->getName());
+                Utils::debugLog(cat->getName());
 
         };
 
@@ -27,6 +27,6 @@ auto TestModule::onTick(void) -> void {
 
     };
     
-    Util::debugLog( std::string( "Tick: " + std::to_string( this->tickInt ) ) );
+    Utils::debugLog( std::string( "Tick: " + std::to_string( this->tickInt ) ) );
 
 };

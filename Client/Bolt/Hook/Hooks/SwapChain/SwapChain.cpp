@@ -1,7 +1,10 @@
 #include "SwapChain.h"
 
+Manager* mgr = nullptr;
+
 auto SwapChain_Hook::init(void) -> void {
 
-    Util::debugLog("Initialize!");
+    mgr = this->manager;
+    //
 
 };

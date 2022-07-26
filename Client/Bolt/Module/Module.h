@@ -1,7 +1,7 @@
 #ifndef CLIENT_BOLT_MODULE_MODULE
 #define CLIENT_BOLT_MODULE_MODULE
 
-#include "../../Util/Util.h"
+#include "../../Utils/Utils.h"
 
 class Category;
 

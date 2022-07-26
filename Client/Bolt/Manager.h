@@ -1,7 +1,7 @@
 #ifndef CLIENT_BOLT_MANAGER
 #define CLIENT_BOLT_MANAGER
 
-#include "../Util/Util.h"
+#include "../Utils/Utils.h"
 
 class Client;
 

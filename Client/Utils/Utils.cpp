@@ -1,6 +1,6 @@
-#include "Util.h"
+#include "Utils.h"
 
-auto Util::getDll(void) -> HMODULE {
+auto Utils::getDll(void) -> HMODULE {
 
 	MEMORY_BASIC_INFORMATION info;
 	size_t len = VirtualQueryEx(GetCurrentProcess(), (void*)getDll, &info, sizeof(info));
@@ -9,7 +9,7 @@ auto Util::getDll(void) -> HMODULE {
 
 };
 
-auto Util::getDebugDir(void) -> std::string {
+auto Utils::getDebugDir(void) -> std::string {
 
 	char* path = NULL;
 	size_t length;
@@ -20,7 +20,7 @@ auto Util::getDebugDir(void) -> std::string {
 
 };
 
-auto Util::debugLog(std::string output) -> void {
+auto Utils::debugLog(std::string output) -> void {
 
 	static bool init = false;
 	static auto path = std::string(getDebugDir() + "\\..\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\RoamingState");
@@ -48,7 +48,7 @@ auto Util::debugLog(std::string output) -> void {
 
 };
 
-auto Util::findSig(const char* szSignature) -> uintptr_t {
+auto Utils::findSig(const char* szSignature) -> uintptr_t {
 	const char* pattern = szSignature;
 	uintptr_t firstMatch = 0;
 	

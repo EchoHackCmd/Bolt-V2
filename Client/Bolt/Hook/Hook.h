@@ -1,7 +1,7 @@
 #ifndef CLIENT_BOLT_HOOK_HOOK
 #define CLIENT_BOLT_HOOK_HOOK
 
-#include "../../Util/Util.h"
+#include "../../Utils/Utils.h"
 
 class Manager;
 

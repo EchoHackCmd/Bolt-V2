@@ -1,5 +1,5 @@
-#ifndef CLIENT_UTIL_UTIL
-#define CLIENT_UTIL_UTIL
+#ifndef CLIENT_UTIL_UTILS
+#define CLIENT_UTIL_UTILS
 
 #include <filesystem>
 #include <Windows.h>
@@ -16,7 +16,7 @@
 #define GET_BYTE( x )    (GET_BITS(x[0]) << 4 | GET_BITS(x[1]))
 #define GET_BITS( x )    (INRANGE((x&(~0x20)),'A','F') ? ((x&(~0x20)) - 'A' + 0xa) : (INRANGE(x,'0','9') ? x - '0' : 0))
 
-class Util {
+class Utils {
 public:
 	static auto getDll(void)->HMODULE;
 	static auto getDebugDir(void)->std::string;
@@ -45,4 +45,4 @@ public:
 	};
 };
 
-#endif /* CLIENT_UTIL_UTIL */
+#endif /* CLIENT_UTILS_UTILS */

@@ -24,7 +24,7 @@ auto Manager::initHooks(void) -> void {
 
 	} else {
 
-		Util::debugLog("MinHook failed to initialize!");
+		Utils::debugLog("MinHook failed to initialize!");
 
 	};
 
@@ -37,7 +37,7 @@ auto Manager::initCategories(void) -> void {
 		CategoryType currType = static_cast<CategoryType>(First);
 		this->categories[currType] = new Category(currType, this);
 
-		Util::debugLog("Category Initialized: " + this->categories[currType]->getName());
+		Utils::debugLog("Category Initialized: " + this->categories[currType]->getName());
 
 	};
 
@@ -150,6 +150,6 @@ auto Manager::baseTick(void) -> void {
 	Sleep(100);
 
 	MH_Uninitialize();
-	FreeLibraryAndExitThread(Util::getDll(), 1);
+	FreeLibraryAndExitThread(Utils::getDll(), 1);
 
 };

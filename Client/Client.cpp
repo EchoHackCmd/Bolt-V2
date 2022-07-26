@@ -2,7 +2,7 @@
 
 Client::Client(std::string name) {
 
-    Util::debugLog("Initializing with name: " + name);
+    Utils::debugLog("Initializing with name: " + name);
     
     this->name = name;
     this->init();
