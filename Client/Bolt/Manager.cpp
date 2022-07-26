@@ -10,12 +10,6 @@ Manager::Manager(Client* client) {
 	this->initModules();
 };
 
-auto Manager::initModules(void) -> void {
-	
-	//
-
-};
-
 auto Manager::initHooks(void) -> void {
 	
 	//
@@ -35,7 +29,7 @@ auto Manager::initCategories(void) -> void {
 
 };
 
-auto Manager::getCategory(CategoryType type) -> std::string {
+auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*> {
 
 	auto res = std::string("Unknown");
 	
@@ -63,6 +57,12 @@ auto Manager::getCategory(CategoryType type) -> std::string {
 
 	};
 
-	return res;
+	return std::pair<std::string, Category*>(res, (res.rfind("Unknown") == std::string::npos ? this->categories[type] : nullptr));
+
+};
+
+auto Manager::initModules(void) -> void {
+	
+	//
 
 };
