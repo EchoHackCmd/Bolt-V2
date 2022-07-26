@@ -9,3 +9,15 @@ Module::Module(std::string name, Category* category) {
     this->category->addModule(this);
 
 };
+
+auto Module::setState(bool state) -> void {
+
+    this->isEnabled = state;
+
+};
+
+auto Module::setKey(uint64_t key) -> void {
+
+    this->key = key;
+
+};
