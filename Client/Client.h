@@ -1,8 +1,7 @@
 #ifndef CLIENT_CLIENT
 #define CLIENT_CLIENT
 
-#include <Windows.h>
-#include <string>
+#include "Bolt/Manager.h"
 
 class Client {
 public:
