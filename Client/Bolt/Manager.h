@@ -4,6 +4,8 @@
 #include "../Util/Util.h"
 
 class Client;
+
+class Hook;
 class Category;
 enum CategoryType;
 
@@ -12,6 +14,7 @@ private:
     Client* client = nullptr;
     bool isRunning = false;
 public:
+    std::vector<Hook*> hooks;
     auto initHooks(void) -> void;
 public:
     Manager(Client*);
