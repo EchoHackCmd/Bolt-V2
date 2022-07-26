@@ -48,7 +48,7 @@ auto Util::debugLog(std::string output) -> void {
 
 };
 
-auto Util::FindSig(const char* szSignature) -> uintptr_t {
+auto Util::findSig(const char* szSignature) -> uintptr_t {
 	const char* pattern = szSignature;
 	uintptr_t firstMatch = 0;
 	static const uintptr_t rangeStart = (uintptr_t)GetModuleHandleA("Minecraft.Windows.exe");
