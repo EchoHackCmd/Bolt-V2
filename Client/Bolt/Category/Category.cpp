@@ -9,6 +9,28 @@ Category::Category(CategoryType type, Manager* mgr) {
 
 };
 
+auto Category::baseTick(void) -> void {
+
+    for(auto mod : this->modules) {
+
+        if(mod->isEnabled != mod->wasEnabled) {
+
+            mod->wasEnabled = mod->isEnabled;
+
+            if(mod->isEnabled)
+                mod->onEnable();
+            else
+                mod->onDisable();
+
+        };
+
+        if(mod->isEnabled)
+            mod->onTick();
+
+    };
+
+};
+
 auto Category::getName(void) -> std::string {
 
     auto mgr = this->manager;
