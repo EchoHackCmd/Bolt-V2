@@ -12,6 +12,8 @@ public:
     };
 public:
     auto onTick(void) -> void override;
+private:
+    int tickInt = 0;
 };
 
 #endif /* CLIENT_BOLT_MODULE_OTHER_TESTMODULE */
