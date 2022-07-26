@@ -11,16 +11,16 @@ class Manager {
 private:
     Client* client = nullptr;
 public:
-    auto initModules(void) -> void;
+    auto initHooks(void) -> void;
 public:
     Manager(Client*);
 public:
     std::map<int, Category*> categories;
     auto initCategories(void) -> void;
 public:
-    auto initHooks(void) -> void;
+    auto getCategory(CategoryType) -> std::pair<std::string, Category*>;
 public:
-    auto getCategory(CategoryType) -> std::string;
+    auto initModules(void) -> void;
 };
 
 #endif /* CLIENT_BOLT_MANAGER */
