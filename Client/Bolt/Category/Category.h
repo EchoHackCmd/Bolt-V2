@@ -26,7 +26,9 @@ public:
     auto baseTick(void) -> void;
 public:
     auto getName(void) -> std::string;
+public:
     auto addModule(Module*) -> void;
+    auto getModule(std::string) -> Module*;
 };
 
 #endif /* CLIENT_BOLT_CATEGORY_CATEGORY */
