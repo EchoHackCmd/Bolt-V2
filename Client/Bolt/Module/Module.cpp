@@ -6,5 +6,6 @@ Module::Module(std::string name, Category* category) {
 
     this->name = name;
     this->category = category;
+    this->category->addModule(this);
 
 };
