@@ -18,7 +18,6 @@ public:
 public:
     std::map<int, Category*> categories;
     auto initCategories(void) -> void;
-public:
     auto getCategory(CategoryType) -> std::pair<std::string, Category*>;
 public:
     auto initModules(void) -> void;
