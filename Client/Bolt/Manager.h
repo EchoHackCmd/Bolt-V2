@@ -5,6 +5,7 @@
 
 class Client;
 class Category;
+enum CategoryType;
 
 class Manager {
 private:
@@ -18,6 +19,8 @@ public:
     auto initCategories(void) -> void;
 public:
     auto initHooks(void) -> void;
+public:
+    auto getCategory(CategoryType) -> std::string;
 };
 
 #endif /* CLIENT_BOLT_MANAGER */
