@@ -11,6 +11,7 @@ public:
     Client(std::string);
 public:
     auto init(void) -> void;
+    auto uninject(void) -> void;
 };
 
 #endif /* CLIENT_CLIENT */
