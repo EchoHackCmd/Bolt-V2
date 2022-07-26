@@ -9,6 +9,6 @@ Client::Client(std::string name) {
 
 auto Client::init(void) -> void {
 
-    //
+    this->manager = new Manager(this);
 
 };
