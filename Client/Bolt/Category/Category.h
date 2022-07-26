@@ -4,6 +4,7 @@
 #include "../../Util/Util.h"
 
 class Manager;
+class Module;
 
 enum CategoryType {
     Combat = 0,
@@ -18,9 +19,12 @@ private:
     CategoryType type;
     Manager* manager;
 public:
+    std::vector<Module*> modules;
+public:
     Category(CategoryType, Manager*);
 public:
     auto getName(void) -> std::string;
+    auto addModule(Module*) -> void;
 };
 
 #endif /* CLIENT_BOLT_CATEGORY_CATEGORY */
