@@ -21,7 +21,7 @@ public:
 	static auto getDebugDir(void)->std::string;
 public:
 	static auto debugLog(std::string) -> void;
-	static auto findSig(const char* szSignature)->uintptr_t;
+	static auto findSig(const char* szSignature) -> uintptr_t;
 public:
 	//this is from floppy ty :)
 	static inline void nopBytes(void* dst, unsigned int size) {
