@@ -4,6 +4,7 @@
 #include "../Util/Util.h"
 
 class Client;
+class Category;
 
 class Manager {
 private:
@@ -13,6 +14,7 @@ public:
 public:
     Manager(Client*);
 public:
+    std::map<int, Category*> categories;
     auto initCategories(void) -> void;
 public:
     auto initHooks(void) -> void;
