@@ -3,11 +3,13 @@
 
 Manager::Manager(Client* client) {
 	this->client = client;
+	this->isRunning = true;
 
 	this->initHooks();
 
 	this->initCategories();
 	this->initModules();
+	this->baseTick();
 };
 
 auto Manager::initHooks(void) -> void {
@@ -114,5 +116,21 @@ auto Manager::initModules(void) -> void {
 	
 	new TestModule(this->categories[CategoryType::Other]);
 	
+
+};
+
+auto Manager::baseTick(void) -> void {
+
+	while(this->isRunning) {
+
+		for(auto [ type, category ] : this->categories) {
+
+			category->baseTick();
+
+		};
+
+		Sleep(1);
+
+	};
 
 };
