@@ -12,8 +12,10 @@ public:
     };
 public:
     auto onTick(void) -> void override;
-private:
-    int tickInt = 0;
+    auto onEnable(void) -> void override;
+    auto onDisable(void) -> void override;
+public:
+    auto onRender(void) -> void override;
 };
 
 #endif /* CLIENT_BOLT_MODULE_OTHER_TESTMODULE */
