@@ -51,20 +51,24 @@ auto Util::debugLog(std::string output) -> void {
 auto Util::findSig(const char* szSignature) -> uintptr_t {
 	const char* pattern = szSignature;
 	uintptr_t firstMatch = 0;
+	
 	static const uintptr_t rangeStart = (uintptr_t)GetModuleHandleA("Minecraft.Windows.exe");
+	
 	MODULEINFO miModInfo;
 	static bool init = false;
+	
 	if (!init) {
 		init = true;
 		GetModuleInformation(GetCurrentProcess(), (HMODULE)rangeStart, &miModInfo, sizeof(MODULEINFO));
-	}
+	};
+
 	static const uintptr_t rangeEnd = rangeStart + miModInfo.SizeOfImage;
 
 	BYTE patByte = GET_BYTE(pattern);
 	const char* oldPat = pattern;
 
-	for (uintptr_t pCur = rangeStart; pCur < rangeEnd; pCur++)
-	{
+	for (uintptr_t pCur = rangeStart; pCur < rangeEnd; pCur++) {
+
 		if (!*pattern)
 			return firstMatch;
 
@@ -78,10 +82,10 @@ auto Util::findSig(const char* szSignature) -> uintptr_t {
 			oldPat = pattern;
 			if (*(PBYTE)pattern != '\?')
 				patByte = GET_BYTE(pattern);
-		}
+		};
 
-		if (*(PBYTE)pattern == '\?' || *(BYTE*)pCur == patByte)
-		{
+		if (*(PBYTE)pattern == '\?' || *(BYTE*)pCur == patByte) {
+
 			if (!firstMatch)
 				firstMatch = pCur;
 
@@ -89,11 +93,17 @@ auto Util::findSig(const char* szSignature) -> uintptr_t {
 				return firstMatch;
 
 			pattern += 2;
+
 		}
-		else
-		{
+		
+		else {
+			
 			pattern = szSignature;
 			firstMatch = 0;
-		}
-	}
-}
+
+		};
+	};
+
+	return NULL;
+	
+};
