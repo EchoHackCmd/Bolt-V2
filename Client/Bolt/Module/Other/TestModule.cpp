@@ -5,28 +5,24 @@
 
 auto TestModule::onTick(void) -> void {
 
-    this->tickInt++;
+    //
 
-    if(this->tickInt >= 100) {
+};
 
-        auto mgr = this->category->manager;
+auto TestModule::onEnable(void) -> void {
 
-        for(auto [ type, category ] : mgr->categories) {
+    Utils::debugLog("Enabled: " + this->name);
 
-            auto cat = mgr->getCategory(type).second;
+};
 
-            if(cat == nullptr)
-                Utils::debugLog(category->getName());
-            else
-                Utils::debugLog(cat->getName());
+auto TestModule::onDisable(void) -> void {
 
-        };
+    Utils::debugLog("Disabled: " + this->name);
 
-        this->setState(false);
-        this->category->manager->isRunning = false;
+};
 
-    };
-    
-    Utils::debugLog( std::string( "Tick: " + std::to_string( this->tickInt ) ) );
+auto TestModule::onRender(void) -> void {
+
+    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), "Hello, World!", 20.f, ImColor(255.f, 255.f, 255.f));
 
 };
