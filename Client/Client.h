@@ -6,6 +6,7 @@
 class Client {
 public:
     std::string name;
+    Manager* manager = nullptr;
 public:
     Client(std::string);
 public:
