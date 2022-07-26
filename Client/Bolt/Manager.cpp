@@ -18,7 +18,7 @@ auto Manager::initHooks(void) -> void {
 
 auto Manager::initCategories(void) -> void {
 	
-	for(auto First = (int)CategoryType::Combat; First <= (int)CategoryType::World; First++) {
+	for(auto First = (int)CategoryType::Combat; First <= (int)CategoryType::Other; First++) {
 
 		CategoryType currType = static_cast<CategoryType>(First);
 		this->categories[currType] = new Category(currType, this);
@@ -53,6 +53,10 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 		case CategoryType::World:
 			res = "World";
+		break;
+
+		case CategoryType::Other:
+			res = "Other";
 		break;
 
 	};
