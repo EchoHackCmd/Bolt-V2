@@ -82,6 +82,8 @@ auto hookPresentD3D12(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flag
         if(!initContext) {
             
             ImGui::CreateContext();
+            initFonts();
+
             initContext = true;
 
         };
@@ -122,6 +124,7 @@ auto hookPresentD3D12(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flag
         if(!initContext){
             
             ImGui::CreateContext();
+            initFonts();
 
         };
 
