@@ -1,0 +1,3 @@
+target_sources(Bolt PRIVATE
+    "ClientInstance.cpp"
+)
