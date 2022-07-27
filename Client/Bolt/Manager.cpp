@@ -20,6 +20,7 @@ Manager::Manager(Client* client) {
 
 #include "Hook/Hooks/ClientInstance/ClientInstance.h"
 #include "Hook/Hooks/SwapChain/SwapChain.h"
+#include "Hook/Hooks/Key/Key.h"
 
 auto Manager::initHooks(void) -> void {
 	
@@ -27,6 +28,7 @@ auto Manager::initHooks(void) -> void {
 
 		new ClientInstance_Hook(this);
 		new SwapChain_Hook(this);
+		new Key_Hook(this);
 
 	} else {
 
@@ -159,5 +161,18 @@ auto Manager::baseTick(void) -> void {
 	Sleep(100);
 	
 	FreeLibraryAndExitThread(Utils::getDll(), 1);
+
+};
+
+auto Manager::isUsingKey(uint64_t key) -> bool {
+
+	for(auto [ currKey, isDown] : keyMap) {
+
+		if(currKey == key && isDown)
+			return true;
+
+	};
+
+	return false;
 
 };
