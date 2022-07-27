@@ -10,27 +10,29 @@ Key _Key;
 
 auto KeyHook_Callback(uint64_t key, bool isDown) -> void {
 
+    auto cancel = false;
     khMgr->keyMap[key] = isDown;
 
     auto instance = Minecraft::getClientInstance();
     auto mcGame = (instance != nullptr ? instance->getMinecraftGame() : nullptr);
 
-    if(isDown && mcGame != nullptr && mcGame->canUseKeys()) {
+    for(auto [ type, category] : khMgr->categories) {
 
-        for(auto [ type, category] : khMgr->categories) {
+        for(auto mod : category->modules) {
 
-            for(auto mod : category->modules) {
-
+            if(isDown && mcGame != nullptr && mcGame->canUseKeys())
                 if(mod->key == key)
                     mod->isEnabled = !mod->isEnabled;
-
-            };
+            
+            if(mod->isEnabled)
+                mod->onKey(key, isDown, &cancel);
 
         };
 
     };
     
-    _Key(key, isDown);
+    if(!cancel)
+        _Key(key, isDown);
 
 };
 
