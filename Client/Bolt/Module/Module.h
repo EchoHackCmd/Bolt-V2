@@ -23,6 +23,7 @@ public:
     virtual auto onDisable(void) -> void {};
 public:
     virtual auto onRender(void) -> void {};
+    virtual auto onKey(uint64_t, bool, bool*) -> void {};
 };
 
 #endif /* CLIENT_BOLT_MODULE_MODULE */
