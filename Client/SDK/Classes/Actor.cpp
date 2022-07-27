@@ -14,3 +14,12 @@ auto Actor::setPos(Vec3<float> pos) -> void {
     _SetPos(this, &pos);
 
 };
+
+auto Actor::getPos(void) -> Vec3<float> {
+
+    using GetPos = Vec3<float>* (__thiscall*)(Actor*);
+    auto _GetPos = (GetPos)(this->VTable[22]);
+
+    return *_GetPos(this);
+
+};
