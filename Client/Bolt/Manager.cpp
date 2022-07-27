@@ -1,5 +1,7 @@
 #include "Manager.h"
+
 #include "Category/Category.h"
+#include "../Client.h"
 
 Manager::Manager(Client* client) {
 	
@@ -135,7 +137,7 @@ auto Manager::initModules(void) -> void {
 
 auto Manager::baseTick(void) -> void {
 
-	while(this->isRunning) {
+	while(this->isRunning && this->client->manager != nullptr) {
 
 		for(auto [ type, category ] : this->categories) {
 
