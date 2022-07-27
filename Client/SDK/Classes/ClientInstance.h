@@ -7,6 +7,8 @@ class ClientInstance {
 public:
     uintptr_t** VTable;
 public:
+    auto getLocalPlayer(void) -> uintptr_t*;
+public:
     auto grabMouse(void) -> void;
     auto releaseMouse(void) -> void;
 };
