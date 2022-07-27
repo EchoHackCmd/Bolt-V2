@@ -30,6 +30,9 @@ public:
     auto initModules(void) -> void;
 public:
     auto baseTick(void) -> void;
+public:
+    std::map<uint64_t, bool> keyMap;
+    auto isUsingKey(uint64_t) -> bool;
 };
 
 #endif /* CLIENT_BOLT_MANAGER */
