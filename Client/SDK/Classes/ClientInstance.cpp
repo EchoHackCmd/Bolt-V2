@@ -1,5 +1,14 @@
 #include "ClientInstance.h"
 
+auto ClientInstance::getLocalPlayer(void) -> uintptr_t* {
+
+    using GetLocalPlayer = uintptr_t* (__thiscall*)(ClientInstance*);
+    auto _GetLocalPlayer = (GetLocalPlayer)(this->VTable[24]);
+
+    return _GetLocalPlayer(this);
+
+};
+
 auto ClientInstance::grabMouse(void) -> void {
     
     using GrabMouse = void (__thiscall*)(ClientInstance*);
