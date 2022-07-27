@@ -1,5 +1,11 @@
 #include "ClientInstance.h"
 
+auto ClientInstance::getMinecraftGame(void) -> MinecraftGame* {
+
+    return *(MinecraftGame**)((uintptr_t)(this) + 0xA8);
+
+};
+
 auto ClientInstance::getLocalPlayer(void) -> Player* {
 
     using GetLocalPlayer = Player* (__thiscall*)(ClientInstance*);
