@@ -3,12 +3,14 @@
 
 #include "../../Utils/Utils.h"
 
+#include "MinecraftGame.h"
 #include "Player.h"
 
 class ClientInstance {
 public:
     uintptr_t** VTable;
 public:
+    auto getMinecraftGame(void) -> MinecraftGame*;
     auto getLocalPlayer(void) -> class Player*;
 public:
     auto grabMouse(void) -> void;
