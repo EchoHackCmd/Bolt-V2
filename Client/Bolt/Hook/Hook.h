@@ -2,6 +2,7 @@
 #define CLIENT_BOLT_HOOK_HOOK
 
 #include "../../Utils/Utils.h"
+#include "../../SDK/Minecraft.h"
 
 class Manager;
 
