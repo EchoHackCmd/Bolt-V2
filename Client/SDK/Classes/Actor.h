@@ -10,6 +10,7 @@ public:
     auto onGround(void) -> bool*;
 public:
     auto setPos(Vec3<float>) -> void;
+    auto getPos(void) -> Vec3<float>;
 };
 
 #endif /* CLIENT_SDK_CLASSES_ACTOR */
