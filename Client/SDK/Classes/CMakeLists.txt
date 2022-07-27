@@ -1,5 +1,6 @@
 target_sources(Bolt PRIVATE
     "ClientInstance.cpp"
-        "Actor.cpp"
-            "Player.cpp"
+        "MinecraftGame.cpp"
+            "Actor.cpp"
+                "Player.cpp"
 )
