@@ -1,7 +1,9 @@
 #include "TestModule.h"
 
 #include "../../Category/Category.h"
+
 #include "../../Manager.h"
+#include "../../../Client.h"
 
 auto TestModule::onTick(void) -> void {
 
@@ -23,14 +25,15 @@ auto TestModule::onDisable(void) -> void {
 
 auto TestModule::onRender(void) -> void {
 
-    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), "Hello, World!", 20.f, ImColor(255.f, 255.f, 255.f));
-
     auto instance = Minecraft::getClientInstance();
-    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
+    auto mcGame = (instance != nullptr ? instance->getMinecraftGame() : nullptr);
 
-    if(player == nullptr)
+    if(mcGame == nullptr || !mcGame->canUseKeys())
         return;
     
-    *player->onGround() = true;
+    auto mgr = this->category->manager;
+    auto client = mgr->client;
+    
+    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), client->name, 20.f, ImColor(255.f, 255.f, 255.f));
 
 };
