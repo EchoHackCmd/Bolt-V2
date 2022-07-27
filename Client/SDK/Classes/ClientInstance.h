@@ -3,11 +3,13 @@
 
 #include "../../Utils/Utils.h"
 
+#include "Player.h"
+
 class ClientInstance {
 public:
     uintptr_t** VTable;
 public:
-    auto getLocalPlayer(void) -> uintptr_t*;
+    auto getLocalPlayer(void) -> class Player*;
 public:
     auto grabMouse(void) -> void;
     auto releaseMouse(void) -> void;

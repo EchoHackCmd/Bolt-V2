@@ -4,8 +4,10 @@
 #include "../Client.h"
 
 Manager::Manager(Client* client) {
-	
+
 	this->client = client;
+	client->manager = this;
+
 	this->isRunning = true;
 
 	this->initHooks();
@@ -137,7 +139,9 @@ auto Manager::initModules(void) -> void {
 
 auto Manager::baseTick(void) -> void {
 
-	while(this->isRunning && this->client->manager != nullptr) {
+	while(this->isRunning) {
+
+		this->isRunning = (this->client != nullptr ? this->client->manager != nullptr : false);
 
 		for(auto [ type, category ] : this->categories) {
 

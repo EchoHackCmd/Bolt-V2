@@ -21,25 +21,16 @@ auto TestModule::onDisable(void) -> void {
 
 };
 
-ClientInstance* instance = nullptr;
-
 auto TestModule::onRender(void) -> void {
 
     RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), "Hello, World!", 20.f, ImColor(255.f, 255.f, 255.f));
 
-    if(instance == nullptr) {
+    auto instance = Minecraft::getClientInstance();
+    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
 
-        instance = Minecraft::getClientInstance();
-
-        if(instance != nullptr) {
-
-            std::ostringstream o;
-            o << std::hex << instance;
-
-            Utils::debugLog("ClientInstance: " + o.str());
-
-        };
-
-    };
+    if(player == nullptr)
+        return;
+    
+    *player->onGround() = true;
 
 };
