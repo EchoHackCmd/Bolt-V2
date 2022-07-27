@@ -1,0 +1,9 @@
+#ifndef CLIENT_SDK_CLASSES_CLIENTINSTANCE
+#define CLIENT_SDK_CLASSES_CLIENTINSTANCE
+
+class ClientInstance {
+public:
+    //
+};
+
+#endif /* CLIENT_SDK_CLASSES_CLIENTINSTANCE */
