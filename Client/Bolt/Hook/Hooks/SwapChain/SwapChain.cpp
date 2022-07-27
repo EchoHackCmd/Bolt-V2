@@ -262,15 +262,15 @@ auto SwapChain_Hook::init(void) -> void {
 
     scMgr = this->manager;
     
-    Utils::debugLog("Initializing Kiero for Dx12");
+    Utils::debugLog("[ SwapChain Hook ] Initializing Kiero for Dx12");
     if(kiero::init(kiero::RenderType::D3D12) != kiero::Status::Success)
         return Utils::debugLog("Failed to initialize Kiero for Dx12");
     
-    Utils::debugLog("Enabling [ Present ] Hook for Dx12");
+    Utils::debugLog("[ SwapChain Hook ] Enabling [ Present ] Hook for Dx12");
     if(kiero::bind(140, (void**)&oPresentD3D12, hookPresentD3D12) != kiero::Status::Success)
         return Utils::debugLog("Failed to bind Present via Kiero");
     
-    Utils::debugLog("Enabling [ Command Lists ] Hook for Dx12");
+    Utils::debugLog("[ SwapChain Hook ] Enabling [ Command Lists ] Hook for Dx12");
     if(kiero::bind(54, (void**)&oExecuteCommandListsD3D12, hookExecuteCommandListsD3D12) != kiero::Status::Success)
         return Utils::debugLog("Failed to bind Command Lists via Kiero");
 
