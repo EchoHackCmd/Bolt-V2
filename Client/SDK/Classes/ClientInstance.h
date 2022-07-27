@@ -10,7 +10,7 @@ class ClientInstance {
 public:
     uintptr_t** VTable;
 public:
-    auto getMinecraftGame(void) -> MinecraftGame*;
+    auto getMinecraftGame(void) -> class MinecraftGame*;
     auto getLocalPlayer(void) -> class Player*;
 public:
     auto grabMouse(void) -> void;
