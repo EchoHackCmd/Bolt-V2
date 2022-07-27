@@ -11,7 +11,7 @@ class Category;
 enum CategoryType;
 
 class Manager {
-private:
+public:
     Client* client = nullptr;
 public:
     bool isRunning = false;
