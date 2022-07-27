@@ -1,1 +1,2 @@
 add_subdirectory(SwapChain)
+add_subdirectory(ClientInstance)
