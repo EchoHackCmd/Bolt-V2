@@ -40,7 +40,8 @@ auto TestModule::onRender(void) -> void {
     if(mgr->isUsingKey(VK_INSERT) && player != nullptr) {
         
         mgr->keyMap[VK_INSERT] = false;
-        player->setPos(Vec3<float>(0.f, -50.f, 0.f));
+
+        player->setPos(player->getPos().add(0.f, 2.f, 0.f));
 
     };
 
