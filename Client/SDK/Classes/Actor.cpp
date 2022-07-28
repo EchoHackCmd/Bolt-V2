@@ -700,6 +700,26 @@ auto Actor::getPickRadius(void) -> float {
 //
 
 
+auto Actor::setArmor(ArmorSlot armorSlot, ItemStack & itemStack) -> void {
+
+    using SetArmor = void (__thiscall*)(Actor*, ArmorSlot, ItemStack&);
+    auto _SetArmor = (SetArmor)(this->VTable[152]);
+
+};
+
+auto Actor::getArmor(ArmorSlot armorSlot) -> ItemStack& {
+
+    using GetArmor = ItemStack & (__thiscall*)(Actor*, ArmorSlot);
+    auto _GetArmor = (GetArmor)(this->VTable[153]);
+
+    return _GetArmor(this, armorSlot);
+
+};
+
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
