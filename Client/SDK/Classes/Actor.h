@@ -27,6 +27,15 @@ public:
 public:
     auto lerpMotion(Vec3<float>) -> void;
 public:
+    auto positionPassenger(Actor*,float) -> void;
+    auto startRiding(Actor*) -> bool;
+    auto addPassenger(Actor*) -> void;
+    auto flagPassengerToRemove(Actor*) -> void;
+public:
+    auto intersects(Vec3<float>, Vec3<float>) -> bool;
+    auto isInWall(void) -> bool;
+    auto isInvisible(void) -> bool;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
