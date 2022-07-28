@@ -48,6 +48,8 @@ auto hookPresentD3D12(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flag
 
     auto callRendr = [&]() {
 
+        scMgr->cleanEntityMap();
+
         for(auto [ type, category ] : scMgr->categories) {
 
             for(auto mod : category->modules) {

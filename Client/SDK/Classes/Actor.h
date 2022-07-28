@@ -1,13 +1,16 @@
 #ifndef CLIENT_SDK_CLASSES_ACTOR
 #define CLIENT_SDK_CLASSES_ACTOR
 
-#include "../../Utils/Utils.h"
+#include "Level.h"
 
 class Actor {
 public:
     uintptr_t** VTable;
 public:
+    auto getLevel(void) -> Level*;
+public:
     auto onGround(void) -> bool*;
+    auto getRuntimeId(void) -> uint64_t;
 public:
     auto setPos(Vec3<float>) -> void;
     auto getPos(void) -> Vec3<float>;

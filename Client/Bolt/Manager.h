@@ -33,6 +33,9 @@ public:
 public:
     std::map<uint64_t, bool> keyMap;
     auto isUsingKey(uint64_t) -> bool;
+public:
+    std::map<uint8_t, Actor*> entityMap;
+    auto cleanEntityMap(void) -> void;
 };
 
 #endif /* CLIENT_BOLT_MANAGER */

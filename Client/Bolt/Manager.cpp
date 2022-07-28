@@ -20,6 +20,7 @@ Manager::Manager(Client* client) {
 
 #include "Hook/Hooks/ClientInstance/ClientInstance.h"
 #include "Hook/Hooks/SwapChain/SwapChain.h"
+#include "Hook/Hooks/Entity/Entity.h"
 #include "Hook/Hooks/Key/Key.h"
 
 auto Manager::initHooks(void) -> void {
@@ -28,6 +29,7 @@ auto Manager::initHooks(void) -> void {
 
 		new ClientInstance_Hook(this);
 		new SwapChain_Hook(this);
+		new Entity_Hook(this);
 		new Key_Hook(this);
 
 	} else {
@@ -174,5 +176,24 @@ auto Manager::isUsingKey(uint64_t key) -> bool {
 	};
 
 	return false;
+
+};
+
+auto Manager::cleanEntityMap(void) -> void {
+
+	auto instance = Minecraft::getClientInstance();
+	
+	auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
+	auto level = (player != nullptr ? player->getLevel() : nullptr);
+
+	if(level == nullptr)
+		return this->entityMap.clear();
+	
+	for(auto [ runtimeId, entity] : this->entityMap) {
+
+		if(level->getRuntimeEntity(runtimeId, false) == nullptr)
+			this->entityMap.erase(runtimeId);
+
+	};
 
 };

@@ -33,16 +33,11 @@ auto TestModule::onRender(void) -> void {
         return;
     
     auto mgr = this->category->manager;
-    auto client = mgr->client;
+    auto entities = mgr->entityMap;
+
+    if(entities.empty())
+        return;
     
-    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), client->name, 20.f, ImColor(255.f, 255.f, 255.f));
-
-    if(mgr->isUsingKey(VK_INSERT) && player != nullptr) {
-        
-        mgr->keyMap[VK_INSERT] = false;
-        
-        player->lerpMotion(Vec3<float>(0.f, 2.f, 0.f));
-
-    };
+    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), "Entities: [ " + std::to_string(entities.size()) + " ]", 20.f, ImColor(255.f, 255.f, 255.f));
 
 };

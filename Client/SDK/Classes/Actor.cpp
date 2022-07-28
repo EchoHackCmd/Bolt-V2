@@ -1,9 +1,25 @@
 #include "Actor.h"
 
+auto Actor::getLevel(void) -> Level* {
+
+    return *(Level**)((uintptr_t)(this) + 0x368);
+
+};
+
+
+//
+
+
 auto Actor::onGround(void) -> bool* {
 
     return (bool*)((uintptr_t)(this) + 0x1D8);
     
+};
+
+auto Actor::getRuntimeId(void) -> uint64_t {
+
+    return *(uint64_t*)((uintptr_t)(this) + 0x548);
+
 };
 
 
