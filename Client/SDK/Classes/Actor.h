@@ -39,6 +39,16 @@ public:
     auto canShowNameTag(void) -> bool;
     auto setNameTagVisible(bool) -> void;
     auto getNameTag(void) -> std::string;
+    auto setNameTag(std::string) -> void;
+public:
+    auto isInWater(void) -> bool;
+    auto hasEnteredWater(void) -> bool;
+    auto isInLava(void) -> bool;
+    auto isUnderLiquid(enum MaterialType) -> bool;
+    auto isOverWater(void) -> bool;
+public:
+    auto setBlockMovementSlowdownMultiplier(class BlockLegacy*, Vec3<float>) -> void;
+    auto resetBlockMovementSlowdownMultiplier(void) -> void;
 public:
     auto getEntityTypeId(void) -> uint8_t;
 };
