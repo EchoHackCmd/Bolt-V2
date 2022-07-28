@@ -636,6 +636,50 @@ auto Actor::isJumping(void) -> bool {
 //
 
 
+auto Actor::isInvulnerableTo(ActorDamageSource* actorDamageSource) -> bool {
+
+    using IsInvulnerableTo = bool (__thiscall*)(Actor*, ActorDamageSource*);
+    auto _IsInvulnerableTo = (IsInvulnerableTo)(this->VTable[134]);
+
+    return _IsInvulnerableTo(this, actorDamageSource);
+
+};
+
+auto Actor::getBlockDamageCause(Block* block) -> ActorDamageCause {
+
+    using GetBlockDamageCause = ActorDamageCause (__thiscall*)(Actor*, Block*);
+    auto _GetBlockDamageCause = (GetBlockDamageCause)(this->VTable[135]);
+
+    return _GetBlockDamageCause(this, block);
+
+};
+
+
+//
+
+
+auto Actor::animateHurt(void) -> void {
+
+    using AnimateHurt = void (__thiscall*)(Actor*);
+    auto _AnimateHurt = (AnimateHurt)(this->VTable[136]);
+
+    return _AnimateHurt(this);
+
+};
+
+auto Actor::doFireHurt(int v) -> void {
+
+    using DoFireHurt = void (__thiscall*)(Actor*, int);
+    auto _DoFireHurt = (DoFireHurt)(this->VTable[137]);
+
+    return _DoFireHurt(this, v);
+
+};
+
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
