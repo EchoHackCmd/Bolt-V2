@@ -36,6 +36,10 @@ public:
     auto isInWall(void) -> bool;
     auto isInvisible(void) -> bool;
 public:
+    auto canShowNameTag(void) -> bool;
+    auto setNameTagVisible(bool) -> void;
+    auto getNameTag(void) -> std::string;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
