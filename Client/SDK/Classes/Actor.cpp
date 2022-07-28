@@ -508,7 +508,7 @@ auto Actor::canAttack(Actor* entity, bool p2) -> bool {
     using CanAttack = bool (__thiscall*)(Actor*, Actor*, bool);
     auto _CanAttack = (CanAttack)(this->VTable[111]);
 
-    retur _CanAttack(this, entity, p2);
+    return _CanAttack(this, entity, p2);
 
 };
 
