@@ -700,19 +700,52 @@ auto Actor::getPickRadius(void) -> float {
 //
 
 
-auto Actor::setArmor(ArmorSlot armorSlot, ItemStack & itemStack) -> void {
+auto Actor::setCarriedItem(ItemStack* itemStack) -> void {
 
-    using SetArmor = void (__thiscall*)(Actor*, ArmorSlot, ItemStack&);
-    auto _SetArmor = (SetArmor)(this->VTable[152]);
+    using SetCarriedItem = void (__thiscall*)(Actor*, ItemStack*);
+    auto _SetCarriedItem = (SetCarriedItem)(this->VTable[160]);
+
+    return _SetCarriedItem(this, itemStack);
 
 };
 
-auto Actor::getArmor(ArmorSlot armorSlot) -> ItemStack& {
+auto Actor::getCarriedItem(void) -> ItemStack* {
 
-    using GetArmor = ItemStack & (__thiscall*)(Actor*, ArmorSlot);
-    auto _GetArmor = (GetArmor)(this->VTable[153]);
+    using GetCarriedItem = ItemStack* (__thiscall*)(Actor*);
+    auto _GetCarriedItem = (GetCarriedItem)(this->VTable[161]);
 
-    return _GetArmor(this, armorSlot);
+    return _GetCarriedItem(this);
+
+};
+
+
+//
+
+
+auto Actor::setOffhandSlot(ItemStack* itemStack) -> void {
+
+    using SetOffhandSlot = void (__thiscall*)(Actor*, ItemStack*);
+    auto _SetOffhandSlot = (SetOffhandSlot)(this->VTable[162]);
+
+    return _SetOffhandSlot(this, itemStack);
+
+};
+
+auto Actor::getEquippedTotem(void) -> ItemStack* {
+
+    using GetEquippedTotem = ItemStack* (__thiscall*)(Actor*);
+    auto _GetEquippedTotem = (GetEquippedTotem)(this->VTable[163]);
+
+    return _GetEquippedTotem(this);
+
+};
+
+auto Actor::consumeTotem(void) -> void {
+
+    using ConsumeTotem = void (__thiscall*)(Actor*);
+    auto _ConsumeTotem = (ConsumeTotem)(this->VTable[164]);
+
+    return _ConsumeTotem(this);
 
 };
 
