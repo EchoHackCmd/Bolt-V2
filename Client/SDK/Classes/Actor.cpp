@@ -296,12 +296,12 @@ auto Actor::isOverWater(void) -> bool {
 //
 
 
-auto Actor::setBlockMovementSlowdownMultiplier(BlockLegacy* legacy, Vec3<float> blockPos) -> void {
+auto Actor::setBlockMovementSlowdownMultiplier(BlockLegacy* legacy, Vec3<float> pos) -> void {
 
     using SetBlockMovementSlowdownMultiplier = void (__thiscall*)(Actor*, BlockLegacy*, Vec3<float>*);
     auto _SetBlockMovementSlowdownMultiplier = (SetBlockMovementSlowdownMultiplier)(this->VTable[75]);
 
-    return _SetBlockMovementSlowdownMultiplier(this, legacy, &blockPos);
+    return _SetBlockMovementSlowdownMultiplier(this, legacy, &pos);
 
 };
 
@@ -315,6 +315,117 @@ auto Actor::resetBlockMovementSlowdownMultiplier(void) -> void {
 
 
 //
+
+
+auto Actor::getHeadLookVector(float v) -> Vec3<float> {
+
+    using GetHeadLookVector = Vec3<float> (__thiscall*)(Actor*, float);
+    auto _GetHeadLookVector = (GetHeadLookVector)(this->VTable[80]);
+
+    return _GetHeadLookVector(this, v);
+
+};
+
+auto Actor::canSee(Vec3<float> pos) -> bool {
+
+    using CanSee = bool (__thiscall*)(Actor*, Vec3<float>*);
+    auto _CanSee = (CanSee)(this->VTable[82]);
+
+    return _CanSee(this, &pos);
+
+};
+
+auto Actor::canSee(Actor* entity) -> bool {
+
+    using CanSee = bool (__thiscall*)(Actor*, Actor*);
+    auto _CanSee = (CanSee)(this->VTable[83]);
+
+    return _CanSee(this, entity);
+
+};
+
+
+//
+
+
+auto Actor::isSkyLit(float f) -> bool {
+
+    using IsSkyLit = bool (__thiscall*)(Actor*, float);
+    auto _IsSkyLit = (IsSkyLit)(this->VTable[85]);
+
+    return _IsSkyLit(this, f);
+
+};
+
+auto Actor::getBrightness(float f) -> float {
+
+    using GetBrightness = float (__thiscall*)(Actor*, float);
+    auto _GetBrightness = (GetBrightness)(this->VTable[86]);
+
+    return _GetBrightness(this, f);
+
+};
+
+
+//
+
+
+auto Actor::isImmobile(void) -> bool {
+
+    using IsImmobile = bool (__thiscall*)(Actor*);
+    auto _IsImmobile = (IsImmobile)(this->VTable[91]);
+
+    return _IsImmobile(this);
+
+};
+
+auto Actor::isSilent(void) -> bool {
+
+    using IsSilent = bool (__thiscall*)(Actor*);
+    auto _IsSilent = (IsSilent)(this->VTable[92]);
+
+    return _IsSilent(this);
+
+};
+
+
+//
+
+
+auto Actor::isPickable(void) -> bool {
+
+    using IsPickable = bool (__thiscall*)(Actor*);
+    auto _IsPickable = (IsPickable)(this->VTable[94]);
+
+    return _IsPickable(this);
+
+};
+
+
+//
+
+
+auto Actor::isSleeping(void) -> bool {
+
+    using IsSleeping = bool (__thiscall*)(Actor*);
+    auto _IsSleeping = (IsSleeping)(this->VTable[96]);
+
+    return _IsSleeping(this);
+
+};
+
+auto Actor::setSleeping(bool state) -> void {
+
+    using SetSleeping = void (__thiscall*)(Actor*, bool);
+    auto _SetSleeping = (SetSleeping)(this->VTable[97]);
+
+    return _SetSleeping(this, state);
+
+};
+
+
+//
+
 
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
