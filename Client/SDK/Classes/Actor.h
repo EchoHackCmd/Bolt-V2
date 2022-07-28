@@ -3,6 +3,8 @@
 
 #include "Level.h"
 
+enum class ActorDamageCause;
+
 class Actor {
 public:
     uintptr_t** VTable;
@@ -92,6 +94,12 @@ public:
     auto canPowerJump(void) -> bool;
     auto setCanPowerJump(bool) -> void;
     auto isJumping(void) -> bool;
+public:
+    auto isInvulnerableTo(struct ActorDamageSource*) -> bool;
+    auto getBlockDamageCause(class Block*) -> ActorDamageCause;
+public:
+    auto animateHurt(void) -> void;
+    auto doFireHurt(int) -> void;
 public:
     auto getEntityTypeId(void) -> uint8_t;
 };
