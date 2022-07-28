@@ -4,6 +4,7 @@
 #include "Level.h"
 
 enum class ActorDamageCause;
+enum ArmorSlot;
 
 class Actor {
 public:
@@ -103,6 +104,9 @@ public:
 public:
     auto feed(int) -> void;
     auto getPickRadius(void) -> float;
+public:
+    auto setArmor(ArmorSlot, class ItemStack &) -> void;
+    auto getArmor(ArmorSlot) -> class ItemStack &;
 public:
     auto getEntityTypeId(void) -> uint8_t;
 };
