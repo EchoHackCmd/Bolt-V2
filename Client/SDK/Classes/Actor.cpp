@@ -539,6 +539,94 @@ auto Actor::getEquipmentCount(void) -> __int64 {
 //
 
 
+auto Actor::setOwner(uint64_t runtimeId) -> void {
+
+    using SetOwner = void (__thiscall*)(Actor*, uint64_t);
+    auto _SetOwner = (SetOwner)(this->VTable[117]);
+
+    return _SetOwner(this, runtimeId);
+
+};
+
+
+//
+
+
+auto Actor::setSitting(bool state) -> void {
+
+    using SetSitting = void (__thiscall*)(Actor*, bool);
+    auto _SetSitting = (SetSitting)(this->VTable[118]);
+
+    return _SetSitting(this, state);
+
+};
+
+auto Actor::setStanding(bool state) -> void {
+
+    using SetStanding = void (__thiscall*)(Actor*, bool);
+    auto _SetStanding = (SetStanding)(this->VTable[124]);
+
+    return _SetStanding(this, state);
+
+};
+
+
+//
+
+
+auto Actor::getInventorySize(void) -> __int64 {
+
+    using GetInventorySize = __int64 (__thiscall*)(Actor*);
+    auto _GetInventorySize = (GetInventorySize)(this->VTable[121]);
+
+    return _GetInventorySize(this);
+
+};
+
+auto Actor::getEquipSlots(void) -> __int64 {
+
+    using GetEquipSlots = __int64 (__thiscall*)(Actor*);
+    auto _GetEquipSlots = (GetEquipSlots)(this->VTable[122]);
+
+    return _GetEquipSlots(this);
+
+};
+
+auto Actor::getChestSlots(void) -> __int64 {
+
+    using GetChestSlots = __int64 (__thiscall*)(Actor*);
+    auto _GetChestSlots = (GetChestSlots)(this->VTable[123]);
+
+    return _GetChestSlots(this);
+
+};
+
+
+//
+
+
+auto Actor::canPowerJump(void) -> bool {
+
+    using CanPowerJump = void (__thiscall*)(Actor*);
+    auto _CanPowerJump = (CanPowerJump)(this->VTable[125]);
+
+    return _CanPowerJump(this);
+
+};
+
+auto Actor::setCanPowerJump(bool state) -> void {
+
+    using SetCanPowerJump = void (__thiscall*)(Actor*, bool);
+    auto _SetCanPowerJump = (SetCanPowerJump)(this->VTable[126]);
+
+    return _SetCanPowerJump(this, state);
+
+};
+
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
