@@ -4,7 +4,15 @@
 #include "Level.h"
 
 enum class ActorDamageCause;
-enum ArmorSlot;
+
+enum ArmorSlot {
+    Helmet = 0,
+    Chestplate = 1,
+    Leggings = 2,
+    Boots = 3
+};
+
+class ItemStack;
 
 class Actor {
 public:
@@ -105,8 +113,12 @@ public:
     auto feed(int) -> void;
     auto getPickRadius(void) -> float;
 public:
-    auto setArmor(ArmorSlot, class ItemStack &) -> void;
-    auto getArmor(ArmorSlot) -> class ItemStack &;
+    auto setCarriedItem(ItemStack*) -> void;
+    auto getCarriedItem(void) -> ItemStack*;
+public:
+    auto setOffhandSlot(ItemStack*) -> void;
+    auto getEquippedTotem(void) -> ItemStack*;
+    auto consumeTotem(void) -> void;
 public:
     auto getEntityTypeId(void) -> uint8_t;
 };
