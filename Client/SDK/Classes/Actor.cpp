@@ -607,7 +607,7 @@ auto Actor::getChestSlots(void) -> __int64 {
 
 auto Actor::canPowerJump(void) -> bool {
 
-    using CanPowerJump = void (__thiscall*)(Actor*);
+    using CanPowerJump = bool (__thiscall*)(Actor*);
     auto _CanPowerJump = (CanPowerJump)(this->VTable[125]);
 
     return _CanPowerJump(this);
