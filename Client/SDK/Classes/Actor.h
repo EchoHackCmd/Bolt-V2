@@ -80,6 +80,18 @@ public:
 public:
     auto getEquipmentCount(void) -> __int64;
 public:
+    auto setOwner(uint64_t) -> void;
+public:
+    auto setSitting(bool) -> void;
+    auto setStanding(bool) -> void;
+public:
+    auto getInventorySize(void) -> __int64;
+    auto getEquipSlots(void) -> __int64;
+    auto getChestSlots(void) -> __int64;
+public:
+    auto canPowerJump(void) -> bool;
+    auto setCanPowerJump(bool) -> void;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
