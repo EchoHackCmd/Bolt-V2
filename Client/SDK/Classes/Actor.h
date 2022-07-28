@@ -65,6 +65,19 @@ public:
     auto isSleeping(void) -> bool;
     auto setSleeping(bool) -> void;
 public:
+    auto setSneaking(bool) -> void;
+    auto isBlocking(void) -> bool;
+public:
+    auto isAlive(void) -> bool;
+    auto isOnFire(void) -> bool;
+    auto isOnHotBlock(void) -> bool;
+public:
+    auto isSurfaceMob(void) -> bool;
+    auto isRemotePlayer(void) -> bool;
+public:
+    auto canAttack(Actor*, bool) -> bool;
+    auto setTarget(Actor*) -> void;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
