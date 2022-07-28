@@ -198,7 +198,7 @@ auto Manager::cleanEntityMap(void) -> void {
 
 };
 
-auto Manager::getLocalPlayer(void) -> Player* {
+auto Manager::getLocalPlayer(void) -> class Player* {
 
 	for(auto [ runtimeId, entity ] : this->entityMap) {
 
