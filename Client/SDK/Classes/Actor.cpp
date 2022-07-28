@@ -680,6 +680,26 @@ auto Actor::doFireHurt(int v) -> void {
 //
 
 
+auto Actor::feed(int v) -> void {
+
+    using Feed = void (__thiscall*)(Actor*, int);
+    auto _Feed = (Feed)(this->VTable[140]);
+
+};
+
+auto Actor::getPickRadius(void) -> float {
+
+    using GetPickRadius = float (__thiscall*)(Actor*);
+    auto _GetPickRadius = (GetPickRadius)(this->VTable[142]);
+
+    return _GetPickRadius(this);
+
+};
+
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
