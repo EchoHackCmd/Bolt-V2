@@ -38,7 +38,19 @@ auto TestModule::onRender(void) -> void {
     if(entities.empty())
         return;
     
-    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), "Entities: [ " + std::to_string(entities.size()) + " ]", 20.f, ImColor(255.f, 255.f, 255.f));
-    RenderUtils::drawText(nullptr, ImVec2(10.f, 30.f), player->getNameTag(), 20.f, ImColor(255.f, 255.f, 255.f));
+    auto stringA = std::string("Entities: [ " + std::to_string(entities.size()) + " ]");
+    auto stringB = player->getNameTag();
+
+    auto fontSize = 25.f;
+
+
+    auto scaleA = RenderUtils::getTextSize(stringA, fontSize);
+    auto scaleB = RenderUtils::getTextSize(stringB, fontSize);
+
+    RenderUtils::fillRect(nullptr, ImVec4(10.f, 10.f, 10.f + scaleA.x, 10.f + scaleA.y), ImColor(21.f, 21.f, 21.f, .8f), 5.f);
+    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), stringA, fontSize, ImColor(255.f, 255.f, 255.f));
+    
+    RenderUtils::fillRect(nullptr, ImVec4(10.f, (11.f + scaleA.y), 10.f + scaleB.x, (11.f + scaleA.y) + scaleB.y), ImColor(21.f, 21.f, 21.f, .8f), 5.f);
+    RenderUtils::drawText(nullptr, ImVec2(10.f, (11.f + scaleA.y)), stringB, fontSize, ImColor(255.f, 255.f, 255.f));
 
 };
