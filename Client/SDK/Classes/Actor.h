@@ -101,6 +101,9 @@ public:
     auto animateHurt(void) -> void;
     auto doFireHurt(int) -> void;
 public:
+    auto feed(int) -> void;
+    auto getPickRadius(void) -> float;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
