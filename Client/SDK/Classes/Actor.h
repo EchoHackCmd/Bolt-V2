@@ -50,6 +50,21 @@ public:
     auto setBlockMovementSlowdownMultiplier(class BlockLegacy*, Vec3<float>) -> void;
     auto resetBlockMovementSlowdownMultiplier(void) -> void;
 public:
+    auto getHeadLookVector(float) -> Vec3<float>;
+    auto canSee(Vec3<float>) -> bool;
+    auto canSee(Actor*) -> bool;
+public:
+    auto isSkyLit(float) -> bool;
+    auto getBrightness(float) -> float;
+public:
+    auto isImmobile(void) -> bool;
+    auto isSilent(void) -> bool;
+public:
+    auto isPickable(void) -> bool;
+public:
+    auto isSleeping(void) -> bool;
+    auto setSleeping(bool) -> void;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
