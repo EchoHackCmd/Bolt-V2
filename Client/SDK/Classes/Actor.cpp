@@ -427,6 +427,104 @@ auto Actor::setSleeping(bool state) -> void {
 //
 
 
+auto Actor::setSneaking(bool state) -> void {
+
+    using SetSneaking = void (__thiscall*)(Actor*, bool);
+    auto _SetSneaking = (SetSneaking)(this->VTable[99]);
+
+    return _SetSneaking(this, state);
+
+};
+
+auto Actor::isBlocking(void) -> bool {
+
+    using IsBlocking = bool (__thiscall*)(Actor*);
+    auto _IsBlocking = (IsBlocking)(this->VTable[99]);
+
+    return _IsBlocking(this);
+
+};
+
+
+//
+
+
+auto Actor::isAlive(void) -> bool {
+
+    using IsAlive = bool (__thiscall*)(Actor*);
+    auto _IsAlive = (IsAlive)(this->VTable[101]);
+
+    return _IsAlive(this);
+
+};
+
+auto Actor::isOnFire(void) -> bool {
+
+    using IsOnFire = bool (__thiscall*)(Actor*);
+    auto _IsOnFire = (IsOnFire)(this->VTable[102]);
+
+    return _IsOnFire(this);
+
+};
+
+auto Actor::isOnHotBlock(void) -> bool {
+
+    using IsOnHotBlock = bool (__thiscall*)(Actor*);
+    auto _IsOnHotBlock = (IsOnHotBlock)(this->VTable[103]);
+
+    return _IsOnHotBlock(this);
+
+};
+
+
+//
+
+
+auto Actor::isSurfaceMob(void) -> bool {
+
+    using IsSurfaceMob = bool (__thiscall*)(Actor*);
+    auto _IsSurfaceMob = (IsSurfaceMob)(this->VTable[105]);
+
+    return _IsSurfaceMob(this);
+
+};
+
+
+auto Actor::isRemotePlayer(void) -> bool {
+
+    using IsRemotePlayer = bool (__thiscall*)(Actor*);
+    auto _IsRemotePlayer = (IsRemotePlayer)(this->VTable[108]);
+
+    return _IsRemotePlayer(this);
+
+};
+
+
+//
+
+
+auto Actor::canAttack(Actor* entity, bool p2) -> bool {
+
+    using CanAttack = bool (__thiscall*)(Actor*, Actor*, bool);
+    auto _CanAttack = (CanAttack)(this->VTable[111]);
+
+    retur _CanAttack(this, entity, p2);
+
+};
+
+
+auto Actor::setTarget(Actor* entity) -> void {
+
+    using SetTarget = void (__thiscall*)(Actor*, Actor*);
+    auto _SetTarget = (SetTarget)(this->VTable[112]);
+
+    return _SetTarget(this, entity);
+
+};
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
