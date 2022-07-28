@@ -234,9 +234,87 @@ auto Actor::getNameTag(void) -> std::string {
 
 };
 
+auto Actor::setNameTag(std::string nametag) -> void {
+
+    using SetNameTag = void (__thiscall*)(Actor*, std::string);
+    auto _SetNameTag = (SetNameTag)(this->VTable[66]);
+
+    return _SetNameTag(this, nametag);
+
+};
+
 
 //
 
+
+auto Actor::isInWater(void) -> bool {
+
+    using IsInWater = bool (__thiscall*)(Actor*);
+    auto _IsInWater = (IsInWater)(this->VTable[70]);
+
+    return _IsInWater(this);
+
+};
+
+auto Actor::hasEnteredWater(void) -> bool {
+
+    using HasEnteredWater = bool (__thiscall*)(Actor*);
+    auto _HasEnteredWater = (HasEnteredWater)(this->VTable[71]);
+
+    return _HasEnteredWater(this);
+
+};
+
+auto Actor::isInLava(void) -> bool {
+
+    using IsInLava = bool (__thiscall*)(Actor*);
+    auto _IsInLava = (IsInLava)(this->VTable[72]);
+
+    return _IsInLava(this);
+
+};
+
+auto Actor::isUnderLiquid(MaterialType type) -> bool {
+
+    using IsUnderLiquid = bool (__thiscall*)(Actor*, MaterialType);
+    auto _IsUnderLiquid = (IsUnderLiquid)(this->VTable[73]);
+
+    return _IsUnderLiquid(this, type);
+
+};
+
+auto Actor::isOverWater(void) -> bool {
+
+    using IsOverWater = bool (__thiscall*)(Actor*);
+    auto _IsOverWater = (IsOverWater)(this->VTable[74]);
+
+    return _IsOverWater(this);
+
+};
+
+
+//
+
+
+auto Actor::setBlockMovementSlowdownMultiplier(BlockLegacy* legacy, Vec3<float> blockPos) -> void {
+
+    using SetBlockMovementSlowdownMultiplier = void (__thiscall*)(Actor*, BlockLegacy*, Vec3<float>*);
+    auto _SetBlockMovementSlowdownMultiplier = (SetBlockMovementSlowdownMultiplier)(this->VTable[75]);
+
+    return _SetBlockMovementSlowdownMultiplier(this, legacy, &blockPos);
+
+};
+
+auto Actor::resetBlockMovementSlowdownMultiplier(void) -> void {
+
+    using ResetBlockMovementSlowdownMultiplier = void (__thiscall*)(Actor*);
+    auto _resetBlockMovementSlowdownMultiplier = (ResetBlockMovementSlowdownMultiplier)(this->VTable[76]);
+
+    return _resetBlockMovementSlowdownMultiplier(this);
+};
+
+
+//
 
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
