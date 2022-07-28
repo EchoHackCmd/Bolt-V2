@@ -78,6 +78,8 @@ public:
     auto canAttack(Actor*, bool) -> bool;
     auto setTarget(Actor*) -> void;
 public:
+    auto getEquipmentCount(void) -> __int64;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
