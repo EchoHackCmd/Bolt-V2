@@ -136,6 +136,77 @@ auto Actor::lerpMotion(Vec3<float> motion) -> void {
 //
 
 
+auto Actor::positionPassenger(Actor* entity, float p2) -> void {
+
+    using PositionPassenger = void (__thiscall*)(Actor*, Actor*, float);
+    auto _PositionPassenger = (PositionPassenger)(this->VTable[51]);
+
+    return _PositionPassenger(this, entity, p2);
+
+};
+
+auto Actor::startRiding(Actor* entity) -> bool {
+
+    using StartRiding = bool (__thiscall*)(Actor*, Actor*);
+    auto _StartRiding = (StartRiding)(this->VTable[52]);
+
+    return _StartRiding(this, entity);
+
+};
+
+auto Actor::addPassenger(Actor* entity) -> void {
+
+    using AddPassenger = void (__thiscall*)(Actor*, Actor*);
+    auto _AddPassenger = (AddPassenger)(this->VTable[53]);
+
+    return _AddPassenger(this, entity);
+
+};
+
+auto Actor::flagPassengerToRemove(Actor* entity) -> void {
+
+    using FlagPassengerToRemove = void (__thiscall*)(Actor*, Actor*);
+    auto _FlagPassengerToRemove = (FlagPassengerToRemove)(this->VTable[54]);
+
+    return _FlagPassengerToRemove(this, entity);
+
+};
+
+
+//
+
+
+auto Actor::intersects(Vec3<float> p1, Vec3<float> p2) -> bool {
+
+    using Intersects = bool (__thiscall*)(Actor*, Vec3<float>*, Vec2<float>*);
+    auto _Intersects = (Intersects)(this->VTable[56]);
+
+    return _Intersects(this, &p1, &p2);
+
+};
+
+auto Actor::isInWall(void) -> bool {
+
+    using IsInWall = bool (__thiscall*)(Actor*);
+    auto _IsInWall = (IsInWall)(this->VTable[57]);
+
+    return _IsInWall(this);
+
+};
+
+auto Actor::isInvisible(void) -> bool {
+
+    using IsInvisible = bool (__thiscall*)(Actor*);
+    auto _IsInvisible = (IsInvisible)(this->VTable[58]);
+
+    return _IsInvisible(this);
+
+};
+
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
