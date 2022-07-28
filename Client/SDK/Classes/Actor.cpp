@@ -522,6 +522,20 @@ auto Actor::setTarget(Actor* entity) -> void {
 
 };
 
+
+//
+
+
+auto Actor::getEquipmentCount(void) -> __int64 {
+
+    using GetEquipmentCount = __int64 (__thiscall*)(Actor*);
+    auto _GetEquipmentCount = (GetEquipmentCount)(this->VTable[116]);
+
+    return _GetEquipmentCount(this);
+
+};
+
+
 //
 
 
