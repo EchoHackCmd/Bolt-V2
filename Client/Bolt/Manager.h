@@ -36,6 +36,7 @@ public:
 public:
     std::map<uint8_t, Actor*> entityMap;
     auto cleanEntityMap(void) -> void;
+    auto getLocalPlayer(void) -> class Player*;
 };
 
 #endif /* CLIENT_BOLT_MANAGER */

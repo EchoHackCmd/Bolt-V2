@@ -197,3 +197,20 @@ auto Manager::cleanEntityMap(void) -> void {
 	};
 
 };
+
+auto Manager::getLocalPlayer(void) -> Player* {
+
+	for(auto [ runtimeId, entity ] : this->entityMap) {
+
+		auto level = entity->getLevel();
+
+		if(level == nullptr)
+			continue;
+		
+		return level->getPrimaryLocalPlayer();
+
+	};
+
+	return nullptr;
+
+};
