@@ -39,5 +39,6 @@ auto TestModule::onRender(void) -> void {
         return;
     
     RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), "Entities: [ " + std::to_string(entities.size()) + " ]", 20.f, ImColor(255.f, 255.f, 255.f));
+    RenderUtils::drawText(nullptr, ImVec2(10.f, 30.f), player->getNameTag(), 20.f, ImColor(255.f, 255.f, 255.f));
 
 };
