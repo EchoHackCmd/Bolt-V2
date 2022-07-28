@@ -91,6 +91,7 @@ public:
 public:
     auto canPowerJump(void) -> bool;
     auto setCanPowerJump(bool) -> void;
+    auto isJumping(void) -> bool;
 public:
     auto getEntityTypeId(void) -> uint8_t;
 };

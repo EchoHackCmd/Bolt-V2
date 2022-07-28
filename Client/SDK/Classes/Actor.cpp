@@ -439,7 +439,7 @@ auto Actor::setSneaking(bool state) -> void {
 auto Actor::isBlocking(void) -> bool {
 
     using IsBlocking = bool (__thiscall*)(Actor*);
-    auto _IsBlocking = (IsBlocking)(this->VTable[99]);
+    auto _IsBlocking = (IsBlocking)(this->VTable[100]);
 
     return _IsBlocking(this);
 
@@ -452,7 +452,7 @@ auto Actor::isBlocking(void) -> bool {
 auto Actor::isAlive(void) -> bool {
 
     using IsAlive = bool (__thiscall*)(Actor*);
-    auto _IsAlive = (IsAlive)(this->VTable[101]);
+    auto _IsAlive = (IsAlive)(this->VTable[102]);
 
     return _IsAlive(this);
 
@@ -461,7 +461,7 @@ auto Actor::isAlive(void) -> bool {
 auto Actor::isOnFire(void) -> bool {
 
     using IsOnFire = bool (__thiscall*)(Actor*);
-    auto _IsOnFire = (IsOnFire)(this->VTable[102]);
+    auto _IsOnFire = (IsOnFire)(this->VTable[103]);
 
     return _IsOnFire(this);
 
@@ -470,7 +470,7 @@ auto Actor::isOnFire(void) -> bool {
 auto Actor::isOnHotBlock(void) -> bool {
 
     using IsOnHotBlock = bool (__thiscall*)(Actor*);
-    auto _IsOnHotBlock = (IsOnHotBlock)(this->VTable[103]);
+    auto _IsOnHotBlock = (IsOnHotBlock)(this->VTable[104]);
 
     return _IsOnHotBlock(this);
 
@@ -483,7 +483,7 @@ auto Actor::isOnHotBlock(void) -> bool {
 auto Actor::isSurfaceMob(void) -> bool {
 
     using IsSurfaceMob = bool (__thiscall*)(Actor*);
-    auto _IsSurfaceMob = (IsSurfaceMob)(this->VTable[105]);
+    auto _IsSurfaceMob = (IsSurfaceMob)(this->VTable[106]);
 
     return _IsSurfaceMob(this);
 
@@ -493,7 +493,7 @@ auto Actor::isSurfaceMob(void) -> bool {
 auto Actor::isRemotePlayer(void) -> bool {
 
     using IsRemotePlayer = bool (__thiscall*)(Actor*);
-    auto _IsRemotePlayer = (IsRemotePlayer)(this->VTable[108]);
+    auto _IsRemotePlayer = (IsRemotePlayer)(this->VTable[109]);
 
     return _IsRemotePlayer(this);
 
@@ -506,7 +506,7 @@ auto Actor::isRemotePlayer(void) -> bool {
 auto Actor::canAttack(Actor* entity, bool p2) -> bool {
 
     using CanAttack = bool (__thiscall*)(Actor*, Actor*, bool);
-    auto _CanAttack = (CanAttack)(this->VTable[111]);
+    auto _CanAttack = (CanAttack)(this->VTable[112]);
 
     return _CanAttack(this, entity, p2);
 
@@ -516,7 +516,7 @@ auto Actor::canAttack(Actor* entity, bool p2) -> bool {
 auto Actor::setTarget(Actor* entity) -> void {
 
     using SetTarget = void (__thiscall*)(Actor*, Actor*);
-    auto _SetTarget = (SetTarget)(this->VTable[112]);
+    auto _SetTarget = (SetTarget)(this->VTable[113]);
 
     return _SetTarget(this, entity);
 
@@ -529,7 +529,7 @@ auto Actor::setTarget(Actor* entity) -> void {
 auto Actor::getEquipmentCount(void) -> __int64 {
 
     using GetEquipmentCount = __int64 (__thiscall*)(Actor*);
-    auto _GetEquipmentCount = (GetEquipmentCount)(this->VTable[116]);
+    auto _GetEquipmentCount = (GetEquipmentCount)(this->VTable[117]);
 
     return _GetEquipmentCount(this);
 
@@ -542,7 +542,7 @@ auto Actor::getEquipmentCount(void) -> __int64 {
 auto Actor::setOwner(uint64_t runtimeId) -> void {
 
     using SetOwner = void (__thiscall*)(Actor*, uint64_t);
-    auto _SetOwner = (SetOwner)(this->VTable[117]);
+    auto _SetOwner = (SetOwner)(this->VTable[118]);
 
     return _SetOwner(this, runtimeId);
 
@@ -555,7 +555,7 @@ auto Actor::setOwner(uint64_t runtimeId) -> void {
 auto Actor::setSitting(bool state) -> void {
 
     using SetSitting = void (__thiscall*)(Actor*, bool);
-    auto _SetSitting = (SetSitting)(this->VTable[118]);
+    auto _SetSitting = (SetSitting)(this->VTable[119]);
 
     return _SetSitting(this, state);
 
@@ -564,7 +564,7 @@ auto Actor::setSitting(bool state) -> void {
 auto Actor::setStanding(bool state) -> void {
 
     using SetStanding = void (__thiscall*)(Actor*, bool);
-    auto _SetStanding = (SetStanding)(this->VTable[124]);
+    auto _SetStanding = (SetStanding)(this->VTable[125]);
 
     return _SetStanding(this, state);
 
@@ -577,7 +577,7 @@ auto Actor::setStanding(bool state) -> void {
 auto Actor::getInventorySize(void) -> __int64 {
 
     using GetInventorySize = __int64 (__thiscall*)(Actor*);
-    auto _GetInventorySize = (GetInventorySize)(this->VTable[121]);
+    auto _GetInventorySize = (GetInventorySize)(this->VTable[122]);
 
     return _GetInventorySize(this);
 
@@ -586,7 +586,7 @@ auto Actor::getInventorySize(void) -> __int64 {
 auto Actor::getEquipSlots(void) -> __int64 {
 
     using GetEquipSlots = __int64 (__thiscall*)(Actor*);
-    auto _GetEquipSlots = (GetEquipSlots)(this->VTable[122]);
+    auto _GetEquipSlots = (GetEquipSlots)(this->VTable[123]);
 
     return _GetEquipSlots(this);
 
@@ -595,7 +595,7 @@ auto Actor::getEquipSlots(void) -> __int64 {
 auto Actor::getChestSlots(void) -> __int64 {
 
     using GetChestSlots = __int64 (__thiscall*)(Actor*);
-    auto _GetChestSlots = (GetChestSlots)(this->VTable[123]);
+    auto _GetChestSlots = (GetChestSlots)(this->VTable[124]);
 
     return _GetChestSlots(this);
 
@@ -608,7 +608,7 @@ auto Actor::getChestSlots(void) -> __int64 {
 auto Actor::canPowerJump(void) -> bool {
 
     using CanPowerJump = bool (__thiscall*)(Actor*);
-    auto _CanPowerJump = (CanPowerJump)(this->VTable[125]);
+    auto _CanPowerJump = (CanPowerJump)(this->VTable[126]);
 
     return _CanPowerJump(this);
 
@@ -617,9 +617,18 @@ auto Actor::canPowerJump(void) -> bool {
 auto Actor::setCanPowerJump(bool state) -> void {
 
     using SetCanPowerJump = void (__thiscall*)(Actor*, bool);
-    auto _SetCanPowerJump = (SetCanPowerJump)(this->VTable[126]);
+    auto _SetCanPowerJump = (SetCanPowerJump)(this->VTable[127]);
 
     return _SetCanPowerJump(this, state);
+
+};
+
+auto Actor::isJumping(void) -> bool {
+
+    using IsJumping = bool (__thiscall*)(Actor*);
+    auto _IsJumping = (IsJumping)(this->VTable[128]);
+
+    return _IsJumping(this);
 
 };
 
