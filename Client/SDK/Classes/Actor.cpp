@@ -207,6 +207,37 @@ auto Actor::isInvisible(void) -> bool {
 //
 
 
+auto Actor::canShowNameTag(void) -> bool {
+
+    using CanShowNameTag = bool (__thiscall*)(Actor*);
+    auto _CanShowNameTag = (CanShowNameTag)(this->VTable[59]);
+
+    return _CanShowNameTag(this);
+
+};
+
+auto Actor::setNameTagVisible(bool visible) -> void {
+
+    using SetNameTagVisible = void (__thiscall*)(Actor*, bool);
+    auto _SetNameTagVisible = (SetNameTagVisible)(this->VTable[61]);
+
+    return _SetNameTagVisible(this, visible);
+
+};
+
+auto Actor::getNameTag(void) -> std::string {
+
+    using GetNameTag = std::string* (__thiscall*)(Actor*);
+    auto _GetNameTag = (GetNameTag)(this->VTable[62]);
+
+    return *_GetNameTag(this);
+
+};
+
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
