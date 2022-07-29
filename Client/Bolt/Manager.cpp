@@ -33,9 +33,8 @@ auto Manager::initHooks(void) -> void {
 		new ClientInstance_Hook(this);
 		new SwapChain_Hook(this);
 		new GameMode_Hook(this);
-				new Gamma_Hook(this);
-
 		new Entity_Hook(this);
+		new Gamma_Hook(this);
 		new Key_Hook(this);
 
 
