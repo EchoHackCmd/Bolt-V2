@@ -5,11 +5,12 @@
 #include "../../../Client.h"
 #include "../../Manager.h"
 
-auto Anim::onTick(void) -> void {
- 
- auto instance = Minecraft::getClientInstance();
+auto Anim::onGameMode(GameMode* GM) -> void {
+    
+    auto player = GM->player;
 
-   auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
+    if(player == nullptr)
+        return this->setState(false);
     
     if (LOOPAnim) {
         
@@ -18,6 +19,7 @@ auto Anim::onTick(void) -> void {
         if (Hurtanim) {
             
             player->animateHurt();
+
         };
     
     };
@@ -37,10 +39,4 @@ auto Anim::onEnable(void) -> void {
 
     };
   
-};
-
-auto Anim::onDisable(void) -> void {
-    
-    this->category->manager->isRunning = false;
-
 };
