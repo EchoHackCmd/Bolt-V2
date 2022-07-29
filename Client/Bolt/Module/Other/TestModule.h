@@ -16,6 +16,7 @@ public:
     auto onDisable(void) -> void override;
 public:
     auto onRender(void) -> void override;
+    auto onGameMode(GameMode*) -> void override;
 };
 
 #endif /* CLIENT_BOLT_MODULE_OTHER_TESTMODULE */
