@@ -63,6 +63,5 @@ auto TestModule::onGameMode(GameMode* GM) -> void {
 
         if(dist == distances.at(0) || (distances.size() > 1 ? dist == distances.at(1) : distances.at(0)))
             GM->attack(entity);
-            player->swingArm; //on vanilla clients you swing AFTER you attack
     };
 };

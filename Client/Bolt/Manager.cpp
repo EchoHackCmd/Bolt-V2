@@ -93,6 +93,9 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 #include "Module/Other/TestModule.h"
 #include "Module/Combat/Criticals.h"
+#include "Module/Movement/NoSlow.h"
+#include "Module/Render/FluxSwing.h"
+#include "Module/Render/NoCameraClip.h"
 
 auto Manager::initModules(void) -> void {
 	
@@ -108,7 +111,7 @@ auto Manager::initModules(void) -> void {
 
 		
 		
-		/* WIP */
+	new NoSlow(this->categories[CategoryType::Movement]);
 	
 	
 	
@@ -124,7 +127,8 @@ auto Manager::initModules(void) -> void {
 
 		
 		
-		/* WIP */
+	new FluxSwing(this->categories[CategoryType::Render]);
+	new NoCameraClip(this->categories[CategoryType::Render]);
 	
 
 	
