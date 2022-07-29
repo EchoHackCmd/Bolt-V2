@@ -20,6 +20,7 @@ Manager::Manager(Client* client) {
 
 #include "Hook/Hooks/ClientInstance/ClientInstance.h"
 #include "Hook/Hooks/SwapChain/SwapChain.h"
+#include "Hook/Hooks/GameMode/GameMode.h"
 #include "Hook/Hooks/Entity/Entity.h"
 #include "Hook/Hooks/Key/Key.h"
 
@@ -29,6 +30,7 @@ auto Manager::initHooks(void) -> void {
 
 		new ClientInstance_Hook(this);
 		new SwapChain_Hook(this);
+		new GameMode_Hook(this);
 		new Entity_Hook(this);
 		new Key_Hook(this);
 
