@@ -2,6 +2,7 @@
 #define CLIENT_SDK_CLASSES_ACTOR
 
 #include "Level.h"
+#include "GameMode.h"
 
 enum class ActorDamageCause;
 

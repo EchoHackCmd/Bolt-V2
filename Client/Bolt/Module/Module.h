@@ -4,6 +4,7 @@
 #include "../../Utils/Utils.h"
 
 class Category;
+class GameMode;
 
 class Module {
 public:
@@ -23,6 +24,7 @@ public:
     virtual auto onDisable(void) -> void {};
 public:
     virtual auto onRender(void) -> void {};
+    virtual auto onGameMode(GameMode*) -> void {};
     virtual auto onKey(uint64_t, bool, bool*) -> void {};
 };
 
