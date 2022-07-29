@@ -7,7 +7,7 @@ class Criticals : public Module {
 public:
     Criticals(Category* c) : Module("Criticals", c) {
         
-        this->setState(false); /* Enable by false */
+        this->setState(false); /* Disable by default */
 
     };
 public:
