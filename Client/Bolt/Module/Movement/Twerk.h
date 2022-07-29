@@ -11,11 +11,6 @@ public:
 
     };
 public:
-    auto onTick(void) -> void override;
-    auto onEnable(void) -> void override;
-    auto onDisable(void) -> void override;
-public:
-    auto onRender(void) -> void override;
     auto onGameMode(GameMode*) -> void override;
 };
 
