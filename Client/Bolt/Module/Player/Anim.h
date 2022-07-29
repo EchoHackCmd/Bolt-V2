@@ -11,11 +11,10 @@ public:
 
     };
 public:
-bool LOOPAnim = false;
-bool Hurtanim = false;
-    auto onTick(void) -> void override;
+    bool LOOPAnim = false, Hurtanim = false;
+public:
+    auto onGameMode(GameMode*) -> void override;
     auto onEnable(void) -> void override;
-    auto onDisable(void) -> void override;
 };
 
 #endif /* CLIENT_BOLT_MODULE_PLAYER_ANIM */
