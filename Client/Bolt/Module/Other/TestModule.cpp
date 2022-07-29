@@ -27,39 +27,49 @@ auto TestModule::onDisable(void) -> void {
 
 auto TestModule::onRender(void) -> void {
 
-    auto instance = Minecraft::getClientInstance();
-    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
-    auto mcGame = (instance != nullptr ? instance->getMinecraftGame() : nullptr);
+    //
 
-    if(mcGame == nullptr || !mcGame->canUseKeys())
-        return;
-    
+};
+
+auto TestModule::onGameMode(GameMode* GM) -> void {
+
     auto mgr = this->category->manager;
     auto entities = mgr->entityMap;
+    auto player = GM->player;
 
-    if(entities.empty())
+    if(player == nullptr || entities.empty())
         return;
-    
-    auto stringA = std::string("Entities: [ " + std::to_string(entities.size()) + " ]");
-    auto stringB = player->getNameTag();
 
-    auto fontSize = 25.f;
+    auto distances = std::vector<double>();
+    auto myPos = player->getPos();
 
+    for(auto [ runtimeId, entity] : entities) {
 
-    auto scaleA = RenderUtils::getTextSize(stringA, fontSize);
-    auto scaleB = RenderUtils::getTextSize(stringB, fontSize);
+        if(runtimeId == player->getRuntimeId() || !entity->isAlive())
+            continue;
+        
+        auto dist = entity->getPos().distanceTo(myPos);
 
-    RenderUtils::fillRect(nullptr, ImVec4(10.f, 10.f, 10.f + scaleA.x, 10.f + scaleA.y), ImColor(21.f, 21.f, 21.f, .8f), 5.f);
-    RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f), stringA, fontSize, ImColor(255.f, 255.f, 255.f));
-    
-    RenderUtils::fillRect(nullptr, ImVec4(10.f, (11.f + scaleA.y), 10.f + scaleB.x, (11.f + scaleA.y) + scaleB.y), ImColor(21.f, 21.f, 21.f, .8f), 5.f);
-    RenderUtils::drawText(nullptr, ImVec2(10.f, (11.f + scaleA.y)), stringB, fontSize, ImColor(255.f, 255.f, 255.f));
+        if(dist <= 12.f)
+            distances.push_back(dist);
 
-    auto currItem = player->getCarriedItem();
-    
-    std::ostringstream o;
-    o << std::hex << currItem;
+    };
 
-    Utils::debugLog(o.str());
-    return this->setState(false);
+    std::sort(distances.begin(), distances.end());
+
+    if(distances.empty())
+        return;
+
+    for(auto [ runtimeId, entity] : entities) {
+
+        if(runtimeId == player->getRuntimeId() || !entity->isAlive())
+            continue;
+        
+        auto dist = entity->getPos().distanceTo(myPos);
+
+        if(dist == distances.at(0) || (distances.size() > 1 ? dist == distances.at(1) : distances.at(0)))
+            GM->attack(entity);
+
+    };
+
 };
