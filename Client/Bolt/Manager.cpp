@@ -22,6 +22,7 @@ Manager::Manager(Client* client) {
 #include "Hook/Hooks/SwapChain/SwapChain.h"
 #include "Hook/Hooks/GameMode/GameMode.h"
 #include "Hook/Hooks/Gamma/Gamma.h"
+
 #include "Hook/Hooks/Entity/Entity.h"
 #include "Hook/Hooks/Key/Key.h"
 
@@ -32,9 +33,11 @@ auto Manager::initHooks(void) -> void {
 		new ClientInstance_Hook(this);
 		new SwapChain_Hook(this);
 		new GameMode_Hook(this);
-		new Gamma_Hook(this);
+				new Gamma_Hook(this);
+
 		new Entity_Hook(this);
 		new Key_Hook(this);
+
 
 	} else {
 
@@ -92,9 +95,10 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 	return std::pair<std::string, Category*>(res, (res.rfind("Unknown") == std::string::npos ? this->categories[type] : nullptr));
 
 };
-
 #include "Module/Other/TestModule.h"
 #include "Module/Combat/Criticals.h"
+#include "Module/Player/Anim.h"
+
 #include "Module/Movement/NoSlow.h"
 #include "Module/Render/FluxSwing.h"
 #include "Module/Render/NoCameraClip.h"
@@ -115,12 +119,12 @@ auto Manager::initModules(void) -> void {
 		
 	new NoSlow(this->categories[CategoryType::Movement]);
 		new Twerk(this->categories[CategoryType::Movement]);
-
 	
 	
 	/* Player */
 
-		
+				new Anim(this->categories[CategoryType::Player]);
+
 		
 		/* WIP */
 	
