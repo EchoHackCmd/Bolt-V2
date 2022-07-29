@@ -26,6 +26,8 @@ public:
     virtual auto onRender(void) -> void {};
     virtual auto onGameMode(GameMode*) -> void {};
     virtual auto onKey(uint64_t, bool, bool*) -> void {};
+public:
+    virtual auto onGamma(float*) -> void {};
 };
 
 #endif /* CLIENT_BOLT_MODULE_MODULE */
