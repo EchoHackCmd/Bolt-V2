@@ -98,7 +98,7 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 #include "Module/Movement/NoSlow.h"
 #include "Module/Render/FluxSwing.h"
 #include "Module/Render/NoCameraClip.h"
-
+#include "Module/Movement/Twerk.h"
 auto Manager::initModules(void) -> void {
 	
 	/* Combat */
@@ -114,7 +114,8 @@ auto Manager::initModules(void) -> void {
 		
 		
 	new NoSlow(this->categories[CategoryType::Movement]);
-	
+		new Twerk(this->categories[CategoryType::Movement]);
+
 	
 	
 	/* Player */
