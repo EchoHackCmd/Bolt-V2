@@ -1,5 +1,6 @@
 #include "Gamma.h"
 
+#include "../../../Category/Category.h"
 #include "../../../Manager.h"
 
 Manager* ghMgr = nullptr;
@@ -7,9 +8,22 @@ Manager* ghMgr = nullptr;
 typedef float (__thiscall* Gamma)(uintptr_t*);
 Gamma _Gamma;
 
-auto gammaCallback(uintptr_t* a1) -> float {
+auto gammaCallback(uintptr_t* p1) -> float {
+
+    auto res = 0.f;
+
+    for(auto [ type, category ] : ghMgr->categories) {
+
+        for(auto mod : category->modules) {
+
+            if(mod->isEnabled)
+                mod->onGamma(&res);
+
+        };
+
+    };
 	
-    return _Gamma(a1);
+    return (res > 0.f ? res : _Gamma(p1));
 
 };
 
