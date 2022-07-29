@@ -32,14 +32,11 @@ auto TestModule::onRender(void) -> void {
 };
 
 auto TestModule::onGameMode(GameMode* GM) -> void {
-
     auto mgr = this->category->manager;
     auto entities = mgr->entityMap;
     auto player = GM->player;
 
-    if(player == nullptr || entities.empty())
-        return;
-
+    if(player == nullptr || entities.empty()) return;
     auto distances = std::vector<double>();
     auto myPos = player->getPos();
 
@@ -47,7 +44,6 @@ auto TestModule::onGameMode(GameMode* GM) -> void {
 
         if(runtimeId == player->getRuntimeId() || !entity->isAlive())
             continue;
-        
         auto dist = entity->getPos().distanceTo(myPos);
 
         if(dist <= 12.f)
@@ -57,19 +53,16 @@ auto TestModule::onGameMode(GameMode* GM) -> void {
 
     std::sort(distances.begin(), distances.end());
 
-    if(distances.empty())
-        return;
+    if(distances.empty()) return;
 
     for(auto [ runtimeId, entity] : entities) {
 
-        if(runtimeId == player->getRuntimeId() || !entity->isAlive())
-            continue;
+    if(runtimeId == player->getRuntimeId() || !entity->isAlive())  continue;
         
         auto dist = entity->getPos().distanceTo(myPos);
 
         if(dist == distances.at(0) || (distances.size() > 1 ? dist == distances.at(1) : distances.at(0)))
             GM->attack(entity);
-
+            player->swingArm; //on vanilla clients you swing AFTER you attack
     };
-
 };
