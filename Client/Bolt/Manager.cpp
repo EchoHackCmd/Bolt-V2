@@ -90,6 +90,7 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 };
 
 #include "Module/Other/TestModule.h"
+#include "Module/Combat/Criticals.h"
 
 auto Manager::initModules(void) -> void {
 	
@@ -97,7 +98,7 @@ auto Manager::initModules(void) -> void {
 
 		
 		
-		/* WIP */
+	new Criticals(this->categories[CategoryType::Combat]);
 
 	
 	
