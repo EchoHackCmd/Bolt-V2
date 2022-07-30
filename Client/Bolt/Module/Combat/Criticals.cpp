@@ -18,7 +18,7 @@ auto Criticals::onEnable(void) -> void {
 
 };
 
-auto Criticals::onDisable(void) -> void{
+auto Criticals::onDisable(void) -> void {
 	
 	Utils::patchBytes(criticalsAddress, ogCrits, 9);
 	
