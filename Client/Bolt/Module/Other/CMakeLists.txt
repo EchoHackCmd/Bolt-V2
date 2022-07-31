@@ -1,1 +1,3 @@
-target_sources(Bolt PRIVATE TestModule.cpp)
+target_sources(Bolt PRIVATE
+    "TestModule.cpp"
+)

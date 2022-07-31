@@ -8,33 +8,44 @@ auto TabGui::onRender(void) -> void {
 
     this->updateAlpha();
 
-    auto textColor = ImColor(34.f, 201.f, 126.f, this->alpha);
-    auto bgColor = ImColor(28.f, 28.f, 28.f, (this->alpha - .6f));
-    
-    auto mgr = this->category->manager;
-    auto categories = mgr->categories;
-
     auto instance = Minecraft::getClientInstance();
     auto guidata = (instance != nullptr ? instance->getGuiData() : nullptr);
 
     if(guidata == nullptr)
         return;
 
-    { /* Categories */
+    auto fontSize = (guidata->uiScale > 1 ? 8.6f * guidata->uiScale : 15 * guidata->uiScale);
+    auto textColor = ImColor(75.f, 219.f, 113.f, this->alpha);
+    auto bgColor = ImColor(28.f, 28.f, 28.f, (this->alpha - .6f));
+    
+    auto mgr = this->category->manager;
+    auto categories = mgr->categories;
 
-        auto currWidth = 0.f;
-        auto start = ImVec2(10.f, 10.f);
-        auto fontSize = guidata->uiScale * 12.f;
+    {
+
+        auto currRect = ImVec4(10.f, 10.f, 10.f, 10.f + (categories.size() * fontSize));
 
         for(auto [ type, category ] : categories) {
 
             auto name = category->getName();
-            auto textSize = RenderUtils::getTextSize(name, fontSize);
+            auto size = RenderUtils::getTextSize(name, fontSize);
+
+            if(currRect.z < size.x)
+                currRect.z = size.x;
             
-            if(textSize.x > currWidth)
-                currWidth = textSize.x;
+            if(type == (categories.size() - 1))
+                currRect.x += currRect.x;
+
+        };
+
+        RenderUtils::fillRect(nullptr, currRect, bgColor, 3.f);
+        
+        for(auto [ type, category ] : categories) {
+
+            auto name = category->getName();
+            auto size = RenderUtils::getTextSize(name, fontSize);
             
-            RenderUtils::drawText(nullptr, ImVec2(start.x + 4.f, start.y + ((int)type + textSize.y)), name, fontSize, textColor);
+            RenderUtils::drawText(nullptr, ImVec2(currRect.x, (currRect.y + size.y) + ((int)type * fontSize)), name, fontSize, textColor);
 
         };
 

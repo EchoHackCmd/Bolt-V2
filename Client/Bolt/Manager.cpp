@@ -94,56 +94,63 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 	return std::pair<std::string, Category*>(res, (res.rfind("Unknown") == std::string::npos ? this->categories[type] : nullptr));
 
 };
-#include "Module/Other/TestModule.h"
+
+/* Combat */
+
+
 #include "Module/Combat/Criticals.h"
-#include "Module/Player/Anim.h"
+
+
+/* Movement */
+
 
 #include "Module/Movement/NoSlow.h"
+
+
+/* Player */
+
+
+
+/* Render */
+
+
+#include "Module/Render/TabGui.h"
 #include "Module/Render/FluxSwing.h"
 #include "Module/Render/NoCameraClip.h"
-#include "Module/Movement/Twerk.h"
+
+
+/* Other */
+
+
+#include "Module/Other/TestModule.h"
+
+
 auto Manager::initModules(void) -> void {
 	
 	/* Combat */
 
-		
-		
+	
 	new Criticals(this->categories[CategoryType::Combat]);
+	
 
-	
-	
 	/* Movement */
 
-		
-		
+	
 	new NoSlow(this->categories[CategoryType::Movement]);
-		new Twerk(this->categories[CategoryType::Movement]);
 	
 	
 	/* Player */
 
-				new Anim(this->categories[CategoryType::Player]);
+	
+	// WIP
 
-		
-		/* WIP */
-	
-	
 	
 	/* Render */
 
-		
-		
+	
+	new TabGui(this->categories[CategoryType::Render]);
 	new FluxSwing(this->categories[CategoryType::Render]);
 	new NoCameraClip(this->categories[CategoryType::Render]);
-	
-
-	
-	/* World */
-
-		
-		
-		/* WIP */
-
 	
 	
 	/* Other */

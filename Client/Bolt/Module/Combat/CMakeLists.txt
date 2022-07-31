@@ -1,1 +1,3 @@
-target_sources(Bolt PRIVATE Criticals.cpp)
+target_sources(Bolt PRIVATE
+    "Criticals.cpp"
+)
