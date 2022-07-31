@@ -12,6 +12,12 @@ public:
 public:
     auto onRender(void) -> void override;
     auto onKey(uint64_t, bool, bool*) -> void override;
+public:
+    int iCategory = 0, iModule = 0;
+    bool sCategory, sModule = false;
+public:
+    float alpha = 0.f;
+    auto updateAlpha(void) -> void;
 };
 
 #endif /* CLIENT_BOLT_MODULE_RENDER_TABGUI */
