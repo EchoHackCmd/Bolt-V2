@@ -181,10 +181,7 @@ auto Manager::baseTick(void) -> void {
 
 auto Manager::isUsingKey(uint64_t key) -> bool {
 
-	if(this->keyMap.contains(key))
-		return this->keyMap[key];
-	
-	return false;
+	return (this->keyMap.contains(key) ? this->keyMap[key] : false);
 
 };
 
