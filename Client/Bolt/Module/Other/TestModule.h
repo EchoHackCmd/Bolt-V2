@@ -11,7 +11,16 @@ public:
 
     };
 public:
+    /* Events handled by DLL - Not by hooks */
+    auto onTick(void) -> void override;
+    auto onEnable(void) -> void override;
+    auto onDisable(void) -> void override;
+public:
+    /* Events handled by hooks */
+    auto onRender(void) -> void override;
     auto onGamma(float*) -> void override;
+    auto onGameMode(GameMode*) -> void override;
+    auto onKey(uint64_t, bool, bool*) -> void override;
 };
 
 #endif /* CLIENT_BOLT_MODULE_OTHER_TESTMODULE */

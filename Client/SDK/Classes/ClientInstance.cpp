@@ -6,6 +6,16 @@ auto ClientInstance::getMinecraftGame(void) -> MinecraftGame* {
 
 };
 
+auto ClientInstance::getGuiData(void) -> GuiData* {
+
+    return *(GuiData**)((uintptr_t)(this) + 0x500);
+
+};
+
+
+//
+
+
 auto ClientInstance::getLocalPlayer(void) -> Player* {
 
     using GetLocalPlayer = Player* (__thiscall*)(ClientInstance*);
@@ -14,6 +24,10 @@ auto ClientInstance::getLocalPlayer(void) -> Player* {
     return _GetLocalPlayer(this);
 
 };
+
+
+//
+
 
 auto ClientInstance::grabMouse(void) -> void {
     
