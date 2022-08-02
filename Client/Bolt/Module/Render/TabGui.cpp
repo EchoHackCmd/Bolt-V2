@@ -16,38 +16,30 @@ auto TabGui::onRender(void) -> void {
 
     auto fontSize = (guidata->uiScale > 1 ? 8.6f * guidata->uiScale : 15 * guidata->uiScale);
     auto textColor = ImColor(75.f, 219.f, 113.f, this->alpha);
-    auto bgColor = ImColor(28.f, 28.f, 28.f, (this->alpha - .6f));
+    auto bgColor = ImColor(28.f, 28.f, 28.f, (this->alpha - .4f));
     
     auto mgr = this->category->manager;
     auto categories = mgr->categories;
 
-    {
+    auto currRect = ImVec2(0.f, 0.f);
+    
+    for(auto [ type, category ] : categories) {
 
-        auto currRect = ImVec4(10.f, 10.f, 10.f, 10.f + (categories.size() * fontSize));
+        auto calcSize = RenderUtils::getTextSize(category->getName(), fontSize);
 
-        for(auto [ type, category ] : categories) {
-
-            auto name = category->getName();
-            auto size = RenderUtils::getTextSize(name, fontSize);
-
-            if(currRect.z < size.x)
-                currRect.z = size.x;
-            
-            if(type == (categories.size() - 1))
-                currRect.x += currRect.x;
-
-        };
-
-        RenderUtils::fillRect(nullptr, currRect, bgColor, 3.f);
+        if(calcSize.x > currRect.x)
+            currRect.x = calcSize.x;
         
-        for(auto [ type, category ] : categories) {
+        if((int)type == (categories.size() - 1))
+            currRect.y = (categories.size() * fontSize) + 10.f;
 
-            auto name = category->getName();
-            auto size = RenderUtils::getTextSize(name, fontSize);
-            
-            RenderUtils::drawText(nullptr, ImVec2(currRect.x, (currRect.y + size.y) + ((int)type * fontSize)), name, fontSize, textColor);
+    };
 
-        };
+    RenderUtils::fillRect(nullptr, ImVec4(10.f, 10.f, 10.f + currRect.x, currRect.y), bgColor, 3.f);
+
+    for(auto [ type, category ] : categories) {
+
+        RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f + ((int)(type) * fontSize)), category->getName(), fontSize, textColor);
 
     };
 
