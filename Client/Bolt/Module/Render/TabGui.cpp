@@ -15,6 +15,7 @@ auto TabGui::onRender(void) -> void {
         return;
 
     auto fontSize = (guidata->uiScale > 1 ? 8.6f * guidata->uiScale : 15 * guidata->uiScale);
+    
     auto textColor = ImColor(75.f, 219.f, 113.f, this->alpha);
     auto bgColor = ImColor(28.f, 28.f, 28.f, (this->alpha - .4f));
     
@@ -31,15 +32,15 @@ auto TabGui::onRender(void) -> void {
             currRect.x = calcSize.x;
         
         if((int)type == (categories.size() - 1))
-            currRect.y = (categories.size() * fontSize) + 10.f;
+            currRect.y = (categories.size() * fontSize) + 14.f;
 
     };
 
-    RenderUtils::fillRect(nullptr, ImVec4(10.f, 10.f, 10.f + currRect.x, currRect.y), bgColor, 3.f);
+    RenderUtils::fillRect(nullptr, ImVec4(10.f, 10.f, 14.f + currRect.x, currRect.y), bgColor, 3.f);
 
     for(auto [ type, category ] : categories) {
 
-        RenderUtils::drawText(nullptr, ImVec2(10.f, 10.f + ((int)(type) * fontSize)), category->getName(), fontSize, textColor);
+        RenderUtils::drawText(nullptr, ImVec2(12.f, 12.f + ((int)(type) * fontSize)), category->getName(), fontSize, textColor);
 
     };
 
