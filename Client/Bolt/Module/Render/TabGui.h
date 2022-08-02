@@ -16,8 +16,11 @@ public:
     int iCategory = 0, iModule = 0;
     bool sCategory, sModule = false;
 public:
+    float iCatXOff = 0.f, iModXOff = 0.f;
+public:
     float alpha = 0.f;
     auto updateAlpha(void) -> void;
+    auto reachOff(float*, float, float) -> void;
 };
 
 #endif /* CLIENT_BOLT_MODULE_RENDER_TABGUI */
