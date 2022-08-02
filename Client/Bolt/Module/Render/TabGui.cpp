@@ -46,11 +46,16 @@ auto TabGui::onRender(void) -> void {
 
     if(sCategory) {
 
+        if(iCatXOff <= 0.f)
+            iCatXOff = 11.f;
+
+        reachOff(&iCatXOff, 13.f + currRect.x, (float)guidata->uiScale);
+
         auto category = categories[(CategoryType)iCategory];
         auto calcSize = RenderUtils::getTextSize(category->getName(), fontSize);
 
         auto yOff = calcSize.y + (iCategory * fontSize);
-        RenderUtils::fillRect(nullptr, ImVec4(11.f, 12.f + yOff, 13.f + currRect.x, 13.f + yOff), textColor, 3.f);
+        RenderUtils::fillRect(nullptr, ImVec4(11.f, 12.f + yOff, iCatXOff, 13.f + yOff), textColor, 3.f);
 
     };
 
@@ -101,10 +106,12 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
         if(sModule && sCategory) {
 
             sModule = false;
+            iModXOff = 0.f;
 
         } else if(sCategory) {
 
             sCategory = false;
+            iCatXOff = 0.f;
 
         };
 
@@ -113,6 +120,7 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
         if(sCategory && !sModule) {
 
             iCategory++;
+            iCatXOff = 0.f;
 
             if(iCategory >= categories.size())
                 iCategory = 0;
@@ -127,21 +135,17 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
                 iCategory = categories.size();
             
             iCategory--;
+            iCatXOff = 0.f;
 
         };
 
     };
 
+    *cancel = true;
+
 };
 
 auto TabGui::updateAlpha(void) -> void {
-
-    auto reachOff = [&](float* value, float target, float modifier) {
-        if(*value < target)
-            *value += modifier;
-        else
-            *value -= modifier;
-    };
 
     auto instance = Minecraft::getClientInstance();
     
@@ -158,4 +162,14 @@ auto TabGui::updateAlpha(void) -> void {
     else
         return reachOff(&alpha, .0f, modifier);
     
+};
+
+auto TabGui::reachOff(float* value, float target, float modifier) -> void {
+    if(*value < target + modifier) {
+        if(*value < target)
+            *value += modifier;
+    } else if(*value > target - modifier) {
+        if(*value > target)
+            *value -= modifier;
+    };
 };
