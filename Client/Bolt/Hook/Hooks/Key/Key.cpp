@@ -31,8 +31,6 @@ auto KeyHook_Callback(uint64_t key, bool isDown) -> void {
 
     };
 
-    Utils::debugLog(std::to_string(cancel));
-
     if(!cancel)
         _Key(key, isDown);
 
