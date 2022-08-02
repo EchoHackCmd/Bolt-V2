@@ -44,11 +44,93 @@ auto TabGui::onRender(void) -> void {
 
     };
 
+    if(sCategory) {
+
+        auto category = categories[(CategoryType)iCategory];
+        auto calcSize = RenderUtils::getTextSize(category->getName(), fontSize);
+
+        auto yOff = calcSize.y + (iCategory * fontSize);
+        RenderUtils::fillRect(nullptr, ImVec4(11.f, 12.f + yOff, 13.f + currRect.x, 13.f + yOff), textColor, 3.f);
+
+    };
+
 };
 
 auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
-    //
+    if(!isDown)
+        return;
+    
+    if(key != VK_LEFT && key != VK_RIGHT && key != VK_UP && key != VK_DOWN)
+        return;
+    
+    auto manager = this->category->manager;
+    auto categories = manager->categories;
+
+    auto category = categories[(CategoryType)iCategory];
+    auto modules = (category != nullptr ? category->modules : std::vector<Module*>());
+
+    if(key == VK_RIGHT) {
+
+        if(!sCategory) {
+
+            sCategory = true;
+
+        } else {
+
+            if(!sModule) {
+
+                sModule = true;
+
+            } else {
+
+                if(modules.empty())
+                    return;
+                
+                auto currModule = modules.at(iModule);
+
+                if(currModule != nullptr)
+                    currModule->isEnabled = !currModule->isEnabled;
+
+            };
+
+        };
+
+    } else if(key == VK_LEFT) {
+
+        if(sModule && sCategory) {
+
+            sModule = false;
+
+        } else if(sCategory) {
+
+            sCategory = false;
+
+        };
+
+    } else if(key == VK_DOWN) {
+
+        if(sCategory && !sModule) {
+
+            iCategory++;
+
+            if(iCategory >= categories.size())
+                iCategory = 0;
+
+        };
+
+    } else if(key == VK_UP) {
+
+        if(sCategory && !sModule) {
+
+            if(iCategory <= 0)
+                iCategory = categories.size();
+            
+            iCategory--;
+
+        };
+
+    };
 
 };
 
