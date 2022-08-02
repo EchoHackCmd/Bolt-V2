@@ -31,7 +31,7 @@ auto KeyHook_Callback(uint64_t key, bool isDown) -> void {
 
     };
     
-    if(!cancel)
+    if(cancel)
         _Key(key, isDown);
 
 };
