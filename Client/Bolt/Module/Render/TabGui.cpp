@@ -17,7 +17,7 @@ auto TabGui::onRender(void) -> void {
     auto fontSize = (guidata->uiScale > 1 ? 8.6f * guidata->uiScale : 15 * guidata->uiScale);
     
     auto textColor = ImColor(75.f, 219.f, 113.f, this->alpha);
-    auto bgColor = ImColor(28.f, 28.f, 28.f, (this->alpha - .4f));
+    auto bgColor = ImColor(21.f, 21.f, 21.f, (this->alpha - .4f));
     
     auto mgr = this->category->manager;
     auto categories = mgr->categories;
@@ -67,6 +67,14 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
         return;
     
     if(key != VK_LEFT && key != VK_RIGHT && key != VK_UP && key != VK_DOWN)
+        return;
+    
+    auto instance = Minecraft::getClientInstance();
+    
+    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
+    auto mcGame = (instance != nullptr ? instance->getMinecraftGame() : nullptr);
+
+    if(mcGame == nullptr || (player != nullptr && !mcGame->canUseKeys()))
         return;
     
     auto manager = this->category->manager;
