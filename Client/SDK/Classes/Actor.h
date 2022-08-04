@@ -177,6 +177,8 @@ public:
     auto isSurvival(void) -> bool;
     auto isSpectator(void) -> bool;
     auto isAttackableGamemode(void) -> bool;
+public:
+    auto setSize(float, float) -> void;
 };
 
 #endif /* CLIENT_SDK_CLASSES_ACTOR */
