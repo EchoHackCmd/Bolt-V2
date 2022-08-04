@@ -16,6 +16,12 @@ auto Actor::onGround(void) -> bool* {
     
 };
 
+auto Actor::getSize(void) -> Vec2<float> {
+
+    return *(Vec2<float>*)((uintptr_t)(this) + 0x4D0);
+
+};
+
 auto Actor::getRuntimeId(void) -> uint64_t {
 
     return *(uint64_t*)((uintptr_t)(this) + 0x548);
