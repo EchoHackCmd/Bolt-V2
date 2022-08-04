@@ -998,3 +998,16 @@ auto Actor::isAttackableGamemode(void) -> bool {
     return _IsAttackableGamemode(this);
 
 };
+
+
+//
+
+
+auto Actor::setSize(float width, float height) -> void {
+
+    using SetSize = void (__thiscall*)(Actor*, float, float);
+    auto _SetSize = (SetSize)(this->VTable[239]);
+
+    return _SetSize(this, width, height);
+
+};
