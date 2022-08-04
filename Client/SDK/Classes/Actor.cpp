@@ -932,11 +932,69 @@ auto Actor::swing(void) -> void {
 //
 
 
-auto Actor::useItem(ItemStackBase& itemStackBase, ItemUseMethod itemUseMethod, bool p3) -> void {
+auto Actor::useItem(ItemStackBase* itemStackBase, ItemUseMethod itemUseMethod, bool p3) -> void {
 
-    using UseItem = void (__thiscall*)(Actor*, ItemStackBase&, ItemUseMethod, bool);
+    using UseItem = void (__thiscall*)(Actor*, ItemStackBase*, ItemUseMethod, bool);
     auto _UseItem = (UseItem)(this->VTable[219]);
 
     return _UseItem(this, itemStackBase, itemUseMethod, p3);
+
+};
+
+
+//
+
+
+auto Actor::isWorldBuilder(void) -> bool {
+    
+    using IsWorldBuilder = bool (__thiscall*)(Actor*);
+    auto _IsWorldBuilder = (IsWorldBuilder)(this->VTable[228]);
+
+    return _IsWorldBuilder(this);
+
+};
+
+auto Actor::isInCreative(void) -> bool {
+    
+    using IsInCreative = bool (__thiscall*)(Actor*);
+    auto _IsInCreative = (IsInCreative)(this->VTable[229]);
+
+    return _IsInCreative(this);
+
+};
+
+auto Actor::isAdventure(void) -> bool {
+    
+    using IsAdventure = bool (__thiscall*)(Actor*);
+    auto _IsAdventure = (IsAdventure)(this->VTable[230]);
+
+    return _IsAdventure(this);
+
+};
+
+auto Actor::isSurvival(void) -> bool {
+    
+    using IsSurvival = bool (__thiscall*)(Actor*);
+    auto _IsSurvival = (IsSurvival)(this->VTable[231]);
+
+    return _IsSurvival(this);
+
+};
+
+auto Actor::isSpectator(void) -> bool {
+    
+    using IsSpectator = bool (__thiscall*)(Actor*);
+    auto _IsSpectator = (IsSpectator)(this->VTable[232]);
+
+    return _IsSpectator(this);
+
+};
+
+auto Actor::isAttackableGamemode(void) -> bool {
+    
+    using IsAttackableGamemode = bool (__thiscall*)(Actor*);
+    auto _IsAttackableGamemode = (IsAttackableGamemode)(this->VTable[233]);
+
+    return _IsAttackableGamemode(this);
 
 };
