@@ -121,10 +121,27 @@ public:
     auto getEquippedTotem(void) -> ItemStack*;
     auto consumeTotem(void) -> void;
 public:
+    auto getEntityTypeId(void) -> uint8_t;
+public:
     auto checkFallDamage(float, bool) -> void;
     auto causeFallDamage(float,float, ActorDamageSource&) -> void;
+    auto handleFallDistanceOnServer(float, float, bool) -> void;
 public:
-    auto getEntityTypeId(void) -> uint8_t;
+    auto canAddPassenger(Actor*) -> bool;
+    auto inCaravan(void) -> bool;
+public:
+    auto sendMotionPacketIfNeeded(void) -> void;
+public:
+    auto stopRiding(bool, bool, bool) -> void;
+public:
+    auto startSwimming(void) -> void;
+    auto stopSwimming(void) -> void;
+public:
+    auto isClientSide(void) -> bool;
+public:
+    auto heal(int) -> void;
+public:
+    auto isInvertedHealAndHarm(void) -> bool;
 };
 
 #endif /* CLIENT_SDK_CLASSES_ACTOR */
