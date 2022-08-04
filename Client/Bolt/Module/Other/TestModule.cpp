@@ -23,13 +23,11 @@ auto TestModule::onEnable(void) -> void {
 
     //onEnable event - Handled by DLL
 
-    this->category->manager->isRunning = false;
-
 };
 
 auto TestModule::onDisable(void) -> void {
 
-    //
+    this->category->manager->isRunning = false;
 
 };
 
@@ -52,6 +50,14 @@ auto TestModule::onGamma(float* gamma) -> void {
 auto TestModule::onGameMode(GameMode* GM) -> void {
 
     //onGameMode event - Handled by GameMode::tick Hook
+
+    auto instance = Minecraft::getClientInstance();
+    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
+
+    if(player == nullptr)
+        return;
+    
+    //
 
 };
 
