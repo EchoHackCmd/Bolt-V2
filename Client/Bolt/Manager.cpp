@@ -99,6 +99,8 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 
 #include "Module/Combat/Criticals.h"
+#include "Module/Combat/Killaura.h"
+#include "Module/Combat/Hitbox.h"
 
 
 /* Movement */
@@ -131,6 +133,8 @@ auto Manager::initModules(void) -> void {
 
 	
 	new Criticals(this->categories[CategoryType::Combat]);
+	new Killaura(this->categories[CategoryType::Combat]);
+	new Hitbox(this->categories[CategoryType::Combat]);
 	
 
 	/* Movement */
