@@ -927,3 +927,16 @@ auto Actor::swing(void) -> void {
     return _Swing(this);
 
 };
+
+
+//
+
+
+auto Actor::useItem(ItemStackBase& itemStackBase, ItemUseMethod itemUseMethod, bool p3) -> void {
+
+    using UseItem = void (__thiscall*)(Actor*, ItemStackBase&, ItemUseMethod, bool);
+    auto _UseItem = (UseItem)(this->VTable[219]);
+
+    return _UseItem(this, itemStackBase, itemUseMethod, p3);
+
+};
