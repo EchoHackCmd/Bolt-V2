@@ -7,7 +7,7 @@ class TestModule : public Module {
 public:
     TestModule(Category* c) : Module("Test Module", c) {
         
-        this->setState(true); /* Enable by default */
+        this->setState(false); /* Enable by default */
 
     };
 public:
