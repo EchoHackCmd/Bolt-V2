@@ -1,5 +1,969 @@
 #include "Actor.h"
 
+_ActorData::_ActorData(Actor* entity) {
+
+    this->setData(entity);
+
+};
+
+auto _ActorData::setData(Actor* entity) -> void {
+    
+    auto type = entity->getEntityTypeId();
+
+    switch(type) {
+
+        case EntityType::Dropped_Item:
+            
+            this->type = std::pair<uint8_t, std::string>(type, "Dropped Item");
+            this->isItemType = true;
+
+        break;
+
+        case EntityType::Experience_Orb:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Experience Orb");
+            this->isItemType = true;
+        
+        break;
+        
+        
+        //
+
+        
+        case EntityType::TNT:
+
+            this->type = std::pair<uint8_t, std::string>(type, "TNT");
+            this->isBlocksType = true;
+        
+        break;
+
+        case EntityType::Falling_Block:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Falling Block");
+            this->isBlocksType = true;
+        
+        break;
+
+        case EntityType::Moving_Block:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Moving Block");
+            this->isBlocksType = true;
+        
+        break;
+
+
+        //
+
+
+        case EntityType::Armor_Stand:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Armor Stand");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Bottle_Of_Enchanting:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Bottle o' Enchanting");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Eye_Of_Ender:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Eye Of Ender");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Ender_Crystal:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Ender Crystal");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Firework_Rocket:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Firework Rocket");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Thrown_Trident:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Thrown Triden");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Shulker_Bullet:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Shulker Bullet");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Fishing_Hook:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Fishing Hook");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Dragon_Fireball:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Dragon Fireball");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Arrow:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Arrow");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Snowball:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Snowball");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Egg:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Egg");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Painting:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Painting");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Minecart:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Minecart");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Fireball:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Fireball");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Splash_Potion:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Splash Potion");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Ender_Pearl:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Ender Pearl");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Leash_Knot:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Leash Knot");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Wither_Skull:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Wither Skull");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Boat:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Boat");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Wither_Skull_Dangerous:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Blue Wither Skull");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Lightning_Bolt:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Lightning Bolt");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Small_Fireball:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Small Fireball");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Area_Effect_Cloud:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Area Effect Cloud");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Hopper_Minecart:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Hopper Minecart");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::TNT_Minecart:
+
+            this->type = std::pair<uint8_t, std::string>(type, "TNT Minecart");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Chest_Minecart:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Chest Minecart");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Command_Block_Minecart:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Command Block Minecart");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Lingering_Potion:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Lingering Potion");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Llama_Spit:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Llama Spit");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Evocation_Fang:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Evocation Fang");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Ice_Bomb:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Ice Bomb");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Balloon:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Balloon");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+        case EntityType::Boat_With_Chest:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Boat With Chest");
+            this->isProjectileOrImmobileType = true;
+        
+        break;
+
+
+        //
+        
+
+        case EntityType::Zombie:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Zombie");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Creeper:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Creeper");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Skeleton:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Skeleton");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Spider:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Spider");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Zombie_Pigman:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Zombie Pigman");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Slime:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Slime");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Enderman:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Enderman");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Silverfish:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Silverfish");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Cave_Spider:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Cave Spider");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Ghast:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Ghast");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Magma_Cube:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Magma Cube");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Blaze:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Blaze");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Zombie_Villager:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Zombie Villager");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Witch:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Witch");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Stray:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Stray");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Husk:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Husk");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Wither_Skeleton:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Wither Skeleton");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Guardian:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Guardian");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Elder_Guardian:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Elder Guardian");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Wither:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Wither");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Ender_Dragon:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Ender Dragon");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Shulker:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Shulker");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Endermite:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Endermite");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Vindicator:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Vindicator");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Phantom:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Phantom");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Ravager:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Ravager");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Evocation_Villager:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Evocation Villager");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Vex:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Vex");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Drowned:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Drowned");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Pillager:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Pillager");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Zombie_Villager_V2:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Zombie Villager");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Piglin:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Piglin");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Hoglin:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Hoglin");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Zoglin:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Zoglin");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Piglin_Brute:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Piglin Brute");
+            this->isHostileType = true;
+        
+        break;
+
+        case EntityType::Warden:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Warden");
+            this->isHostileType = true;
+        
+        break;
+
+
+        //
+
+
+        case EntityType::Chicken:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Chicken");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Cow:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Cow");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Pig:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Pig");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Sheep:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Sheep");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Wolf:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Wolf");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Villager:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Villager");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Mooshroom:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Mooshroom");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Squid:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Squid");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Rabbit:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Rabbit");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Bat:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Bat");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Iron_Golem:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Iron Golem");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Snow_Golem:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Snow Golem");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Ocelot:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Ocelot");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Horse:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Horse");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Donkey:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Donkey");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Mule:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Mule");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Skeleton_Horse:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Skeleton Horse");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Zombie_Horse:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Zombie Horse");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Polar_Bear:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Polar Bear");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Llama:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Llama");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Parrot:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Parrot");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Dolphin:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Dolphin");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Turtle:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Turtle");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Cat:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Cat");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Pufferfish:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Pufferfish");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Salmon:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Salmon");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Tropical_Fish:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Tropical Fish");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Cod:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Cod");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Panda:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Panda");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Villager_V2:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Villager");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Wandering_Trader:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Wandering Trader");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Fox:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Fox");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Bee:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Bee");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Strider:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Strider");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Goat:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Goat");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Frog:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Frog");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Tadpole:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Tadpole");
+            this->isPassiveType = true;
+        
+        break;
+
+        case EntityType::Allay:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Allay");
+            this->isPassiveType = true;
+        
+        break;
+
+
+        //
+
+        
+        case EntityType::Remote_Player:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Player");
+        
+        break;
+
+        case EntityType::Shield:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Shield");
+        
+        break;
+
+
+        //
+
+
+        case EntityType::Elder_Guardian_Ghost:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Elder Guardian Ghost");
+        
+        break;
+
+
+        //
+
+
+        case EntityType::NPC:
+
+            this->type = std::pair<uint8_t, std::string>(type, "NPC");
+        
+        break;
+
+        case EntityType::Agent:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Agent");
+        
+        break;
+
+        case EntityType::Tripod_Camera:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Tripod Camera");
+        
+        break;
+
+        case EntityType::Chalkboard:
+
+            this->type = std::pair<uint8_t, std::string>(type, "Chalkboard");
+        
+        break;
+
+
+    };
+
+};
+
+
+//
+
+
+auto _ActorData::getType(void) -> std::pair<uint8_t, std::string> {
+
+    return this->type;
+
+};
+
+
+//
+
+
+auto _ActorData::isHostile(void) -> bool {
+
+    return this->isHostileType;
+
+};
+
+auto _ActorData::isPassive(void) -> bool {
+
+    return this->isPassiveType;
+
+};
+
+
+//
+
+
+auto _ActorData::isItem(void) -> bool {
+
+    return this->isItemType;
+
+};
+
+auto _ActorData::isBlock(void) -> bool {
+
+    return this->isBlocksType;
+
+};
+
+auto _ActorData::isImmobOrProj(void) -> bool {
+
+    return this->isProjectileOrImmobileType;
+
+};
+
+
+//
+
+
+auto Actor::getInfo(void) -> _ActorData* {
+
+    return new _ActorData(this);
+
+};
+
+
+//
+
+
+auto Actor::isValidMob(void) -> bool {
+
+    auto info = this->getInfo();
+
+    if(info->isHostile() || info->isPassive())
+        return true;
+    
+    if(info->getType().first == EntityType::Remote_Player)
+        return true;
+    
+    return false;
+
+};
+
+auto Actor::getType(void) -> std::pair<uint8_t, std::string> {
+    
+    return this->getInfo()->getType();
+
+};
+
+
+//
+
+
 auto Actor::getLevel(void) -> Level* {
 
     return *(Level**)((uintptr_t)(this) + 0x368);
