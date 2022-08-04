@@ -169,7 +169,14 @@ public:
     auto openContainerComponent(Player*) -> void;
 public:
     auto swing(void) -> void;
-    auto useItem(ItemStackBase&, ItemUseMethod, bool) -> void;
+    auto useItem(ItemStackBase*, ItemUseMethod, bool) -> void;
+public:
+    auto isWorldBuilder(void) -> bool;
+    auto isInCreative(void) -> bool;
+    auto isAdventure(void) -> bool;
+    auto isSurvival(void) -> bool;
+    auto isSpectator(void) -> bool;
+    auto isAttackableGamemode(void) -> bool;
 };
 
 #endif /* CLIENT_SDK_CLASSES_ACTOR */
