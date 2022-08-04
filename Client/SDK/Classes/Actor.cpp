@@ -753,6 +753,28 @@ auto Actor::consumeTotem(void) -> void {
 //
 
 
+auto Actor::checkFallDamage(float p1, bool p2) -> void {
+
+    using CheckFallDamage = void (__thiscall*)(Actor*, float, bool);
+    auto _CheckFallDamage = (CheckFallDamage)(this->VTable[184]);
+
+    return _CheckFallDamage(this, p1, p2);
+
+};
+
+auto Actor::causeFallDamage(float p1,float p2, ActorDamageSource& actorDamageSource) -> void {
+
+    using CheckFallDamage = void (__thiscall*)(Actor*, float, float, ActorDamageSource&);
+    auto _CheckFallDamage = (CheckFallDamage)(this->VTable[185]);
+
+    return _CheckFallDamage(this, p1, p2, actorDamageSource);
+
+};
+
+
+//
+
+
 auto Actor::getEntityTypeId(void) -> uint8_t {
 
     using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
