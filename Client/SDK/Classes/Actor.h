@@ -14,6 +14,7 @@ enum ArmorSlot {
 };
 
 class ItemStack;
+class Player;
 
 class Actor {
 public:
@@ -142,6 +143,10 @@ public:
     auto heal(int) -> void;
 public:
     auto isInvertedHealAndHarm(void) -> bool;
+public:
+    auto openContainerComponent(Player*) -> void;
+public:
+    auto swing(void) -> void;
 };
 
 #endif /* CLIENT_SDK_CLASSES_ACTOR */
