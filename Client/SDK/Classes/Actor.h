@@ -121,6 +121,9 @@ public:
     auto getEquippedTotem(void) -> ItemStack*;
     auto consumeTotem(void) -> void;
 public:
+    auto checkFallDamage(float, bool) -> void;
+    auto causeFallDamage(float,float, ActorDamageSource&) -> void;
+public:
     auto getEntityTypeId(void) -> uint8_t;
 };
 
