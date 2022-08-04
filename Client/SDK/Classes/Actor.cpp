@@ -753,6 +753,19 @@ auto Actor::consumeTotem(void) -> void {
 //
 
 
+auto Actor::getEntityTypeId(void) -> uint8_t {
+
+    using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
+    auto _GetEntityTypeId = (GetEntityTypeId)(this->VTable[169]);
+
+    return _GetEntityTypeId(this);
+
+};
+
+
+//
+
+
 auto Actor::checkFallDamage(float p1, bool p2) -> void {
 
     using CheckFallDamage = void (__thiscall*)(Actor*, float, bool);
@@ -771,15 +784,120 @@ auto Actor::causeFallDamage(float p1,float p2, ActorDamageSource& actorDamageSou
 
 };
 
+auto Actor::handleFallDistanceOnServer(float p1, float p2, bool p3) -> void {
+
+    using HandleFallDistanceOnServer = void (__thiscall*)(Actor*, float, float, bool);
+    auto _HandleFallDistanceOnServer = (HandleFallDistanceOnServer)(this->VTable[186]);
+
+    return _HandleFallDistanceOnServer(this, p1, p2, p3);
+
+};
+
 
 //
 
 
-auto Actor::getEntityTypeId(void) -> uint8_t {
+auto Actor::canAddPassenger(Actor* entity) -> bool {
 
-    using GetEntityTypeId = uint8_t (__thiscall*)(Actor*);
-    auto _GetEntityTypeId = (GetEntityTypeId)(this->VTable[169]);
+    using CanAddPassenger = bool (__thiscall*)(Actor*, Actor*);
+    auto _CanAddPassenger = (CanAddPassenger)(this->VTable[191]);
 
-    return _GetEntityTypeId(this);
+    return _CanAddPassenger(this, entity);
+
+};
+
+auto Actor::inCaravan(void) -> bool {
+
+    using InCaravan = bool (__thiscall*)(Actor*);
+    auto _InCaravan = (InCaravan)(this->VTable[194]);
+
+    return _InCaravan(this);
+
+};
+
+
+//
+
+
+auto Actor::sendMotionPacketIfNeeded(void) -> void {
+
+    using SendMotionPacketIfNeeded = void (__thiscall*)(Actor*);
+    auto _SendMotionPacketIfNeeded = (SendMotionPacketIfNeeded)(this->VTable[197]);
+
+    return _SendMotionPacketIfNeeded(this);
+
+};
+
+
+//
+
+
+auto Actor::stopRiding(bool p1, bool p2, bool p3) -> void {
+
+    using StopRiding = void (__thiscall*)(Actor*, bool, bool, bool);
+    auto _StopRiding = (StopRiding)(this->VTable[199]);
+
+    return _StopRiding(this, p1, p2, p3);
+
+};
+
+
+//
+
+
+auto Actor::startSwimming(void) -> void {
+
+    using StartSwimming = void (__thiscall*)(Actor*);
+    auto _StartSwimming = (StartSwimming)(this->VTable[200]);
+
+    return _StartSwimming(this);
+
+};
+
+auto Actor::stopSwimming(void) -> void {
+
+    using StopSwimming = void (__thiscall*)(Actor*);
+    auto _StopSwimming = (StopSwimming)(this->VTable[201]);
+
+    return _StopSwimming(this);
+
+};
+
+
+//
+
+
+auto Actor::isClientSide(void) -> bool {
+
+    using IsClientSide = bool (__thiscall*)(Actor*);
+    auto _IsClientSide = (IsClientSide)(this->VTable[204]);
+
+    return _IsClientSide(this);
+
+};
+
+
+//
+
+
+auto Actor::heal(int v) -> void {
+
+    using Heal = void (__thiscall*)(Actor*, int);
+    auto _Heal = (Heal)(this->VTable[208]);
+
+    return _Heal(this, v);
+
+};
+
+
+//
+
+
+auto Actor::isInvertedHealAndHarm(void) -> bool {
+
+    using IsInvertedHealAndHarm = bool (__thiscall*)(Actor*);
+    auto _IsInvertedHealAndHarm = (IsInvertedHealAndHarm)(this->VTable[209]);
+
+    return _IsInvertedHealAndHarm(this);
 
 };
