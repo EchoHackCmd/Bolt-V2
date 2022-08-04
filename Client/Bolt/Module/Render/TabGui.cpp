@@ -36,7 +36,8 @@ auto TabGui::onRender(void) -> void {
 
     };
 
-    RenderUtils::fillRect(nullptr, ImVec4(10.f, 10.f, 14.f + currRect.x, currRect.y), bgColor, 3.f);
+    auto catRect = ImVec4(10.f, 10.f, 14.f + currRect.x, currRect.y);
+    RenderUtils::fillRect(nullptr, catRect, bgColor, 3.f);
 
     for(auto [ type, category ] : categories) {
 
@@ -47,15 +48,67 @@ auto TabGui::onRender(void) -> void {
     if(sCategory) {
 
         if(iCatXOff <= 0.f)
-            iCatXOff = 11.f;
+            iCatXOff = catRect.x + 1.f;
 
-        reachOff(&iCatXOff, 13.f + currRect.x, (float)guidata->uiScale);
+        reachOff(&iCatXOff, catRect.z - 2.f, (float)guidata->uiScale);
 
         auto category = categories[(CategoryType)iCategory];
         auto calcSize = RenderUtils::getTextSize(category->getName(), fontSize);
 
-        auto yOff = calcSize.y + (iCategory * fontSize);
-        RenderUtils::fillRect(nullptr, ImVec4(11.f, 12.f + yOff, iCatXOff, 13.f + yOff), textColor, 3.f);
+        auto yOff = calcSize.y + (catRect.y + (iCategory * fontSize));
+        RenderUtils::fillRect(nullptr, ImVec4(catRect.x + 2.f, yOff + 1.f, iCatXOff, yOff + 2.f), textColor, 3.f);
+
+
+        /* Display Modules in current Category */
+
+        
+        auto modules = (category != nullptr ? category->modules : std::vector<Module*>());
+        currRect = ImVec2(0.f, 0.f);
+
+        if(modules.empty())
+            return;
+        
+        auto I = 0;
+        for(auto mod : modules) {
+
+            auto calcSize = RenderUtils::getTextSize(mod->name, fontSize);
+
+            if(calcSize.x > currRect.x)
+                currRect.x = calcSize.x;
+            
+            if(I == (modules.size() - 1))
+                currRect.y = (modules.size() * fontSize) + 14.f;
+            
+            I++;
+
+        };
+        
+        auto modsRect = ImVec4(catRect.z + 2.f, catRect.y + (iCategory * fontSize), (catRect.z + 2.f) + (12.f + currRect.x), (catRect.y + (iCategory * fontSize)) + (modules.size() * fontSize) + 4.f);
+        RenderUtils::fillRect(nullptr, modsRect, bgColor, 3.f);
+
+        I = 0;
+        for(auto mod : modules) {
+
+            auto displayColor = (mod->isEnabled ? textColor : ImColor(209.f, 78.f, 54.f, this->alpha));
+
+            if(sModule && iModule == I) {
+
+                if(iModXOff <= 0.f)
+                    iModXOff = modsRect.x + 1.f;
+
+                reachOff(&iModXOff, modsRect.z - 2.f, (float)guidata->uiScale);
+
+                auto calcSize = RenderUtils::getTextSize(mod->name, fontSize);
+
+                auto yOff = calcSize.y + (modsRect.y + (iModule * fontSize));
+                RenderUtils::fillRect(nullptr, ImVec4(modsRect.x + 2.f, yOff + 1.f, iModXOff, yOff + 2.f), displayColor, 3.f);
+
+            };
+
+            RenderUtils::drawText(nullptr, ImVec2(modsRect.x + 4.f, modsRect.y + (I * fontSize) + 2.f), mod->name, fontSize, displayColor);
+            I++;
+
+        };
 
     };
 
@@ -133,6 +186,14 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
             if(iCategory >= categories.size())
                 iCategory = 0;
 
+        } else if(sModule) {
+
+            iModule++;
+            iModXOff = 0.f;
+
+            if(iModule >= modules.size())
+                iModule = 0;
+
         };
 
     } else if(key == VK_UP) {
@@ -144,6 +205,14 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
             
             iCategory--;
             iCatXOff = 0.f;
+
+        } else if(sModule) {
+
+            if(iModule <= 0)
+                iModule = modules.size();
+            
+            iModule--;
+            iModXOff = 0.f;
 
         };
 
