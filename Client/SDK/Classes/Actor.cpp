@@ -901,3 +901,29 @@ auto Actor::isInvertedHealAndHarm(void) -> bool {
     return _IsInvertedHealAndHarm(this);
 
 };
+
+
+//
+
+
+auto Actor::openContainerComponent(Player* player) -> void {
+
+    using OpenContainerComponent = void (__thiscall*)(Actor*, Player*);
+    auto _OpenContainerComponent = (OpenContainerComponent)(this->VTable[217]);
+
+    return _OpenContainerComponent(this, player);
+
+};
+
+
+//
+
+
+auto Actor::swing(void) -> void {
+
+    using Swing = void (__thiscall*)(Actor*);
+    auto _Swing = (Swing)(this->VTable[218]);
+
+    return _Swing(this);
+
+};
