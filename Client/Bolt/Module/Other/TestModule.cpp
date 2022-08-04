@@ -23,6 +23,8 @@ auto TestModule::onEnable(void) -> void {
 
     //onEnable event - Handled by DLL
 
+    this->category->manager->isRunning = false;
+
 };
 
 auto TestModule::onDisable(void) -> void {
