@@ -45,6 +45,7 @@ public:
     auto getLevel(void) -> Level*;
 public:
     auto onGround(void) -> bool*;
+    auto getSize(void) -> Vec2<float>;
     auto getRuntimeId(void) -> uint64_t;
 public:
     auto setPos(Vec3<float>) -> void;
