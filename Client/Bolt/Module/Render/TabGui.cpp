@@ -168,11 +168,13 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
             sModule = false;
             iModXOff = 0.f;
+            iModule = 0;
 
         } else if(sCategory) {
 
             sCategory = false;
             iCatXOff = 0.f;
+            iCategory = 0;
 
         };
 
