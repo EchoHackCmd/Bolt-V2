@@ -16,6 +16,28 @@ enum ArmorSlot {
 class ItemStack;
 class Player;
 
+class ItemStackBase;
+
+enum ItemUseMethod {
+
+    EquipArmor = 0,
+    Eat = 1,
+    Attack = 2,
+    Consume = 3,
+    Throw = 4,
+    Shoot = 5,
+    Place = 6,
+    Fill_Bottle = 7,
+    Fill_Bucket = 8,
+    Pour_Bucket = 9,
+    Use_Tool = 10,
+    Interact = 11,
+    Retrieved = 12,
+    Dyed = 13,
+    Traded = 14
+
+};
+
 class Actor {
 public:
     uintptr_t** VTable;
@@ -147,6 +169,7 @@ public:
     auto openContainerComponent(Player*) -> void;
 public:
     auto swing(void) -> void;
+    auto useItem(ItemStackBase&, ItemUseMethod, bool) -> void;
 };
 
 #endif /* CLIENT_SDK_CLASSES_ACTOR */
