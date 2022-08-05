@@ -4,22 +4,31 @@
 #include "../../../Client.h"
 #include "../../Manager.h"
 
-auto criticalsAddress = (void*)(Utils::findSig("73 5A 80 B9 D8 01 ? ? ? 75 51"));
-char ogCrits[9] = {};
-
 auto Criticals::onEnable(void) -> void {
 
-	if (criticalsAddress != nullptr) {
-		
-		Utils::copyBytes(criticalsAddress, ogCrits, 9);
-		Utils::nopBytes(criticalsAddress, 9);
-	
+	if(this->patches.empty()) {
+
+		auto critsAddr = Utils::findSig("73 5A 80 B9 D8 01 ? ? ? 75 51");
+		auto bytes = getBytes((void*)critsAddr, 9);
+
+		this->patches[critsAddr] = bytes;
+
+	};
+
+	for(auto [ addr, bytes ] : this->patches) {
+
+		nopBytes((void*)addr, bytes.size());
+
 	};
 
 };
 
 auto Criticals::onDisable(void) -> void {
 	
-	Utils::patchBytes(criticalsAddress, ogCrits, 9);
+	for(auto [ addr, bytes ] : this->patches) {
+
+		patchBytes((void*)addr, bytes);
+
+	};
 	
 };
