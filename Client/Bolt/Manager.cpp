@@ -182,25 +182,22 @@ auto Manager::baseTick(void) -> void {
 	};
 
 	
-	
 	for(auto [ type, category ] : this->categories) {
 
 		for(auto mod : category->modules) {
 
-			if(mod->isEnabled) {
+			for(auto [ addr, bytes ] : mod->patches) {
 
-				for(auto [ addr, bytes ] : mod->patches) {
-
-					mod->patchBytes((void*)addr, bytes);
-
-				};
+				mod->patchBytes((void*)addr, bytes);
 
 			};
+
+			mod->patches.clear();
+			mod->onDisable();
 
 		};
 
 	};
-
 
 
 	kiero::shutdown();
