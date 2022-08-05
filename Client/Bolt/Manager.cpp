@@ -181,6 +181,28 @@ auto Manager::baseTick(void) -> void {
 
 	};
 
+	
+	
+	for(auto [ type, category ] : this->categories) {
+
+		for(auto mod : category->modules) {
+
+			if(mod->isEnabled) {
+
+				for(auto [ addr, bytes ] : mod->patches) {
+
+					mod->patchBytes((void*)addr, bytes);
+
+				};
+
+			};
+
+		};
+
+	};
+
+
+
 	kiero::shutdown();
 	MH_Uninitialize();
 
