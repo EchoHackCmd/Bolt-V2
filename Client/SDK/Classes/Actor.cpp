@@ -943,20 +943,26 @@ auto Actor::getInfo(void) -> _ActorData* {
 auto Actor::isValidMob(void) -> bool {
 
     auto info = this->getInfo();
+    auto res = false;
 
     if(info->isHostile() || info->isPassive())
-        return true;
+        res = true;
     
     if(info->getType().first == EntityType::Remote_Player)
-        return true;
+        res = true;
     
-    return false;
+    delete info;
+    return res;
 
 };
 
 auto Actor::getType(void) -> std::pair<uint8_t, std::string> {
     
-    return this->getInfo()->getType();
+    auto info = this->getInfo();
+    auto res = info->getType();
+
+    delete info;
+    return res;
 
 };
 
