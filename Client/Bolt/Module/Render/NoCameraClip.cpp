@@ -4,21 +4,31 @@
 #include "../../../Client.h"
 #include "../../Manager.h"
 
-void* CameraAddr = (void*)(Utils::findSig("f3 44 0f 51 ea 45 0f 28 cd"));
-char ogCam[5] = {};
-
 auto NoCameraClip::onEnable(void) -> void {
 	
-	if(CameraAddr == nullptr)
-		return;
-	
-	Utils::copyBytes(CameraAddr, ogCam, 5);
-	Utils::nopBytes(CameraAddr, 5);
+	if(this->patches.empty()) {
+
+		auto cameraAddr = Utils::findSig("F3 44 0F 51 EA 45 0F 28 CD");
+		auto bytes = getBytes((void*)cameraAddr, 5);
+
+		this->patches[cameraAddr] = bytes;
+
+	};
+
+	for(auto [ addr, bytes ] : this->patches) {
+
+		nopBytes((void*)addr, bytes.size());
+
+	};
 
 };
 
-auto NoCameraClip::onDisable(void) -> void{
+auto NoCameraClip::onDisable(void) -> void {
 	
-	Utils::patchBytes(CameraAddr, ogCam, 5);
+	for(auto [ addr, bytes ] : this->patches) {
+
+		patchBytes((void*)addr, bytes);
+
+	};
 
 };
