@@ -210,6 +210,24 @@ public:
     auto isAttackableGamemode(void) -> bool;
 public:
     auto setSize(float, float) -> void;
+public:
+    auto startSpinAttack(void) -> void;
+    auto setDamageNearbyMobs(bool) -> void;
+public:
+    auto kill(void) -> void;
+    auto die(ActorDamageSource*) -> void;
+    auto shouldDropDeathLoot(void) -> bool;
+public:
+    auto markHurt(void) -> void;
+public:
+    auto checkInsideBlocks(float) -> void;
+    auto pushOutOfBlocks(Vec3<float>) -> void;
+public:
+    auto updateWaterState(void) -> bool;
+    auto doWaterSplashEffect(void) -> void;
+    auto spawnTrailBubbles(void) -> void;
+public:
+    auto updateInsideBlock(void) -> void;
 };
 
 enum EntityType {
