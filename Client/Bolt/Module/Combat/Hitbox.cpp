@@ -38,9 +38,7 @@ auto Hitbox::onDisable(void) -> void {
     
     for(auto [ runtimeId, entity] : mgr->entityMap) {
 
-        auto info = _ActorData(entity);
-
-        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
+        if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
             continue;
         
         auto type = entity->getEntityTypeId();
