@@ -15,9 +15,7 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
     
     for(auto [ runtimeId, entity ] : entityMap) {
 
-        auto info = _ActorData(entity);
-
-        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
+        if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
             continue;
         
         if(!entity->isAlive() || !player->canAttack(entity, false))
@@ -34,16 +32,10 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
         return;
     
     std::sort(distances.begin(), distances.end());
-    auto I = 0;
 
     for(auto [ runtimeId, entity ] : entityMap) {
 
-        if(I >= 2)
-            break;
-
-        auto info = _ActorData(entity);
-
-        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
+        if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
             continue;
         
         if(!entity->isAlive() || !player->canAttack(entity, false))
@@ -55,7 +47,7 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
 
             GM->attack(entity);
             player->swing();
-            I++;
+            break;
 
         };
 
