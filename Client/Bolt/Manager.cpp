@@ -119,6 +119,7 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 #include "Module/Render/TabGui.h"
 #include "Module/Render/FluxSwing.h"
+#include "Module/Render/Fullbright.h"
 #include "Module/Render/NoCameraClip.h"
 
 
@@ -156,6 +157,7 @@ auto Manager::initModules(void) -> void {
 	
 	new TabGui(this->categories[CategoryType::Render]);
 	new FluxSwing(this->categories[CategoryType::Render]);
+	new Fullbright(this->categories[CategoryType::Render]);
 	new NoCameraClip(this->categories[CategoryType::Render]);
 	
 	
