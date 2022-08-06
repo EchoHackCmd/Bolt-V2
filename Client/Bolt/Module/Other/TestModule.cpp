@@ -27,7 +27,7 @@ auto TestModule::onEnable(void) -> void {
 
 auto TestModule::onDisable(void) -> void {
 
-    this->category->manager->isRunning = false;
+    //onDisable event - Handled by DLL
 
 };
 
@@ -58,6 +58,18 @@ auto TestModule::onGameMode(GameMode* GM) -> void {
         return;
     
     //
+
+};
+
+auto TestModule::onPacket(Packet* packet, bool* cancel) -> void {
+
+    //onPacket event - Handled by LoopbackPacketSender::send Hook
+
+    if(packet->getId() == PacketType::MovePlayer) {
+
+        Utils::debugLog("!");
+
+    };
 
 };
 

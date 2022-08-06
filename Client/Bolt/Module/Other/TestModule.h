@@ -20,6 +20,7 @@ public:
     auto onRender(void) -> void override;
     auto onGamma(float*) -> void override;
     auto onGameMode(GameMode*) -> void override;
+    auto onPacket(Packet*, bool*) -> void override;
     auto onKey(uint64_t, bool, bool*) -> void override;
 };
 
