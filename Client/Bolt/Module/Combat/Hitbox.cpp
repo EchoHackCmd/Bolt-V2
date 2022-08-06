@@ -11,7 +11,9 @@ auto Hitbox::onGameMode(GameMode* GM) -> void {
 
     for(auto [ runtimeId, entity ] : mgr->entityMap) {
 
-        if(player->getRuntimeId() == runtimeId)
+        auto info = _ActorData(entity);
+
+        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
             continue;
         
         auto type = entity->getEntityTypeId();
@@ -36,7 +38,9 @@ auto Hitbox::onDisable(void) -> void {
     
     for(auto [ runtimeId, entity] : mgr->entityMap) {
 
-        if(player->getRuntimeId() == runtimeId)
+        auto info = _ActorData(entity);
+
+        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
             continue;
         
         auto type = entity->getEntityTypeId();
