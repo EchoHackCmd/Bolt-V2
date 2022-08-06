@@ -36,6 +36,35 @@ public:
 public:
     virtual auto getItemCount(ItemStack*) -> int;
     virtual auto findFirstSlotForItem(ItemStack*) -> int;
+private:
+    virtual auto Function21(void) -> void;
+    virtual auto Function22(void) -> void;
+public:
+    virtual auto setContainerChanged(int) -> void;
+    virtual auto setContainerMoved(void) -> void;
+public:
+    virtual auto setCustomName(std::string) -> void;
+public:
+    virtual auto isWatchingIfActorEnters(void) -> bool;
+private:
+    virtual auto Function27(void) -> void;
+    virtual auto Function28(void) -> void;
+public:
+    virtual auto createTransactionContext(std::function<void (Inventory &, int, ItemStack const &, ItemStack const &)>,std::function<void (void)>) -> void;
+private:
+    virtual auto Function30(void) -> void;
+public:
+    virtual auto isEmpty(void) -> bool;
+    virtual auto add(ItemStack*) -> bool;
+    virtual auto canAdd(ItemStack*) -> bool;
+    virtual auto clearSlot(int) -> void;
+    virtual auto clearInventory(int) -> void;
+private:
+    virtual auto Function36(void) -> void;
+public:
+    virtual auto getEmptySlotsCount(void) -> __int64;
+    virtual auto getFirstEmptySlot(void) -> __int64;
+    virtual auto setContainerSize(int) -> void;
 };
 
 #endif /* CLIENT_SDK_CLASSES_INVENTORY */
