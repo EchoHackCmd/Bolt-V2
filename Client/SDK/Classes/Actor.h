@@ -67,7 +67,7 @@ class Actor {
 public:
     uintptr_t** VTable;
 public:
-    auto getInfo(void) -> _ActorData*;
+    auto getInfo(void) -> _ActorData;
 public:
     auto isValidMob(void) -> bool;
     auto getType(void) -> std::pair<uint8_t, std::string>;
