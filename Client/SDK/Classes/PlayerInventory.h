@@ -1,14 +1,18 @@
 #ifndef CLIENT_SDK_CLASSES_PLAYERINVENTORY
 #define CLIENT_SDK_CLASSES_PLAYERINVENTORY
 
-#include "../../Utils/Utils.h"
+#include "Inventory.h"
 
 class ItemStack;
 class ItemInstance;
 
 class PlayerInventory {
 private:
-    virtual ~PlayerInventory();
+    char pad_0x0008[0xB8]; //0x0008
+public:
+    Inventory* inventory;  //0x00C0
+private:
+    virtual ~PlayerInventory(void);
 private:
     virtual auto Function0(void) -> void;
 public:
