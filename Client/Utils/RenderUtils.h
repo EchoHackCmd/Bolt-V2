@@ -2,6 +2,7 @@
 #define CLIENT_UTILS_RENDERUTILS
 
 #include <filesystem>
+#include <functional>
 #include <Windows.h>
 #include <MinHook.h>
 #include <assert.h>
