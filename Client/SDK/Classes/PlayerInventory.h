@@ -4,6 +4,7 @@
 #include "../../Utils/Utils.h"
 
 class ItemStack;
+class ItemInstance;
 
 class PlayerInventory {
 private:
@@ -18,7 +19,11 @@ private:
     virtual auto Function4(void) -> void;
     virtual auto getContainerWeakRef(void) -> void*;
 public:
-    virtual auto getItemStack(int) -> ItemStack*;
+    virtual auto getItemStack(int) -> class ItemStack*;
+private:
+    virtual auto getTagRegistry(void) -> void*;
+public:
+    virtual auto getItemInstance(int) -> class ItemInstance*;
 };
 
 #endif /* CLIENT_SDK_CLASSES_PLAYERINVENTORY */
