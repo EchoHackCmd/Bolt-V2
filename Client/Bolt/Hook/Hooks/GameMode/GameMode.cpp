@@ -10,6 +10,8 @@ GameModeTick _GameModeTick;
 
 auto GameModeTick_Callback(GameMode* GM) -> void {
 
+    gmMgr->cleanEntityMap();
+
     for(auto [ type, category ] : gmMgr->categories) {
 
         for(auto mod : category->modules) {
