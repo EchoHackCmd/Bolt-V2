@@ -9,7 +9,7 @@ EntityTick _EntityTick;
 
 auto EntityTick_Callback(Actor* entity, void* p2, void* p3) -> void {
 
-
+    ehMgr->cleanEntityMap();
     ehMgr->entityMap[entity->getRuntimeId()] = entity;
     
     _EntityTick(entity, p2, p3);
