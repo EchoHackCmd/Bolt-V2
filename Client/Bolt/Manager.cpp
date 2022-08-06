@@ -108,10 +108,12 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 
 #include "Module/Movement/NoSlow.h"
+#include "Module/Movement/Step.h"
 
 
 /* Player */
 
+#include "Module/Player/AutoTool.h"
 
 
 /* Render */
@@ -128,6 +130,7 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 #include "Module/Other/TestModule.h"
 #include "Module/Other/Uninject.h"
+#include "Module/Other/NoPacket.h"
 
 
 auto Manager::initModules(void) -> void {
@@ -144,12 +147,13 @@ auto Manager::initModules(void) -> void {
 
 	
 	new NoSlow(this->categories[CategoryType::Movement]);
-	
+	new Step(this->categories[CategoryType::Movement]);
+
 	
 	/* Player */
 
 	
-	// WIP
+	//new AutoTool(this->categories[CategoryType::Player]);
 
 	
 	/* Render */
@@ -163,7 +167,7 @@ auto Manager::initModules(void) -> void {
 	
 	/* Other */
 
-	
+	new NoPacket(this->categories[CategoryType::Other]);
 	new Uninject(this->categories[CategoryType::Other]);
 	new TestModule(this->categories[CategoryType::Other]);
 	
