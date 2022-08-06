@@ -6,6 +6,7 @@
 class MinecraftGame {
 public:
     auto canUseKeys(void) -> bool;
+    auto mcFont(void) -> class Font*;
 };
 
 #endif /* CLIENT_SDK_CLASSES_MINECRAFTGAME */

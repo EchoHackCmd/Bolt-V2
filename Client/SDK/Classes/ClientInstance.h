@@ -1,8 +1,7 @@
 #ifndef CLIENT_SDK_CLASSES_CLIENTINSTANCE
 #define CLIENT_SDK_CLASSES_CLIENTINSTANCE
 
-#include "../../Utils/Utils.h"
-
+#include "MinecraftUIRenderContext.h"
 #include "LoopbackPacketSender.h"
 #include "MinecraftGame.h"
 #include "GuiData.h"

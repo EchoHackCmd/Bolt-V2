@@ -7,7 +7,7 @@ class TestModule : public Module {
 public:
     TestModule(Category* c) : Module("Test Module", c) {
         
-        this->setState(false); /* Enable by default */
+        this->setState(true); /* Enable by default */
 
     };
 public:
@@ -22,6 +22,7 @@ public:
     auto onGameMode(GameMode*) -> void override;
     auto onPacket(Packet*, bool*) -> void override;
     auto onKey(uint64_t, bool, bool*) -> void override;
+    auto onRenderCtx(MinecraftUIRenderContext*) -> void override;
 };
 
 #endif /* CLIENT_BOLT_MODULE_OTHER_TESTMODULE */

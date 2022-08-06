@@ -29,6 +29,7 @@ public:
     virtual auto onGameMode(class GameMode*) -> void {};
     virtual auto onKey(uint64_t, bool, bool*) -> void {};
     virtual auto onPacket(class Packet*, bool*) -> void {};
+    virtual auto onRenderCtx(class MinecraftUIRenderContext*) -> void {};
 public:
     virtual auto onGamma(float*) -> void {};
 public:

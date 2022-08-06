@@ -1,13 +1,28 @@
 #include "ClientInstance.h"
 
+#include "../../../Category/Category.h"
+#include "../../../Manager.h"
+
 Manager* ciMgr = nullptr;
 
-typedef void ( __thiscall* RenderContext ) ( void*, void* );
+typedef void ( __thiscall* RenderContext ) ( void*, MinecraftUIRenderContext* );
 RenderContext _RenderContext;
 
-auto RenderContext_Callback( void* a1, void* ctx ) -> void {
+auto RenderContext_Callback( void* a1, MinecraftUIRenderContext* ctx ) -> void {
 
-    Minecraft::setClientInstance(*(ClientInstance**)((uintptr_t)(ctx) + 0x8));
+    Minecraft::setClientInstance(ctx->clientInstance);
+    MCRenderer::setContext(ctx);
+
+    for(auto [ type, category ] : ciMgr->categories) {
+
+        for(auto mod : category->modules) {
+
+            if(mod->isEnabled)
+                mod->onRenderCtx(ctx);
+
+        };
+
+    };
     
     _RenderContext(a1, ctx);
 
