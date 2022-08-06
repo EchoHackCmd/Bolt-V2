@@ -992,6 +992,12 @@ auto Actor::getSize(void) -> Vec2<float> {
 
 };
 
+auto Actor::getStepHeight(void) -> float* {
+
+    return (float*)((uintptr_t)(this) + 0x238);
+
+};
+
 auto Actor::getRuntimeId(void) -> uint64_t {
 
     return *(uint64_t*)((uintptr_t)(this) + 0x548);

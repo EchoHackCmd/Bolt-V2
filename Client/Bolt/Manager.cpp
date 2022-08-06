@@ -167,9 +167,9 @@ auto Manager::initModules(void) -> void {
 	
 	/* Other */
 
+	new TestModule(this->categories[CategoryType::Other]);
 	new NoPacket(this->categories[CategoryType::Other]);
 	new Uninject(this->categories[CategoryType::Other]);
-	new TestModule(this->categories[CategoryType::Other]);
 	
 
 };

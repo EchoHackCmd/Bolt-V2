@@ -7,7 +7,7 @@ class NoPacket : public Module {
 public:
     NoPacket(Category* c) : Module("NoPacket", c) {};
 public:
-    auto onPacket(Packet* packet, bool* cancelSend) -> void override;
+    auto onPacket(Packet*, bool*) -> void override;
 };
 
 #endif /* CLIENT_BOLT_MODULE_OTHER_NOPACKET */

@@ -76,6 +76,7 @@ public:
 public:
     auto onGround(void) -> bool*;
     auto getSize(void) -> Vec2<float>;
+    auto getStepHeight(void) -> float*;
     auto getRuntimeId(void) -> uint64_t;
 public:
     auto setPos(Vec3<float>) -> void;

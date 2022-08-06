@@ -5,14 +5,19 @@
 #include "../../Category/Category.h"
 
 auto Step::onGameMode(GameMode* GM) -> void {
+    
     auto player = GM->player;
-    auto mgr = this->category->manager;
+    *player->getStepHeight() = 2.5625f;
 
-    player->stepHeight = 2.0f; //until we have settings
 };
 
 auto Step::onDisable(void) -> void {
+    
     auto instance = Minecraft::getClientInstance();
     auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
-    player->stepHeight = 0.5625f; 
+
+    if(player == nullptr)
+        return;
+    
+    *player->getStepHeight() = 0.5625f;
 };

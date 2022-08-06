@@ -4,6 +4,8 @@
 #include "../../../Client.h"
 #include "../../Category/Category.h"
 
-auto NoPacket::onPacket(Packet* packet, bool* cancelSend) -> void {
- cancelSend = true;
+auto NoPacket::onPacket(Packet* packet, bool* cancel) -> void {
+    
+    *cancel = true;
+
 };
