@@ -93,7 +93,13 @@ public:
 public:
     static auto getFont(void) -> Font*;
 public:
+    static auto getTextWidth(std::string, float) -> float;
+public:
     static auto drawText(std::string, Vec2<float>, Color, float) -> void;
+    static auto flushText(void) -> void;
+public:
+    static auto fillRectangle(Vec4<float>, Color) -> void;
+    static auto drawRectangle(Vec4<float>, Color, int) -> void;
 };
 
 #endif /* CLIENT_SDK_CLASSES_MINECRAFTUIRENDERCONTEXT */
