@@ -4,4 +4,5 @@ target_sources(Bolt PRIVATE
             "Level.cpp"
                 "Actor.cpp"
                     "Player.cpp"
+                        "Packet.cpp"
 )
