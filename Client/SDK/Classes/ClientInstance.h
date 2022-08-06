@@ -3,6 +3,7 @@
 
 #include "../../Utils/Utils.h"
 
+#include "LoopbackPacketSender.h"
 #include "MinecraftGame.h"
 #include "GuiData.h"
 #include "Player.h"
