@@ -37,7 +37,7 @@ auto TabGui::onRender(void) -> void {
     };
 
     auto catRect = ImVec4(10.f, 10.f, 14.f + currRect.x, currRect.y);
-    RenderUtils::fillRect(nullptr, catRect, bgColor, 3.f);
+    RenderUtils::fillRect(nullptr, catRect, bgColor, 6.f);
 
     for(auto [ type, category ] : categories) {
 
@@ -56,7 +56,7 @@ auto TabGui::onRender(void) -> void {
         auto calcSize = RenderUtils::getTextSize(category->getName(), fontSize);
 
         auto yOff = calcSize.y + (catRect.y + (iCategory * fontSize));
-        RenderUtils::fillRect(nullptr, ImVec4(catRect.x + 2.f, yOff + 1.f, iCatXOff, yOff + 2.f), textColor, 3.f);
+        RenderUtils::fillRect(nullptr, ImVec4(catRect.x + 2.f, yOff + 1.f, iCatXOff, yOff + 2.f), textColor, 6.f);
 
 
         /* Display Modules in current Category */
@@ -84,7 +84,7 @@ auto TabGui::onRender(void) -> void {
         };
         
         auto modsRect = ImVec4(catRect.z + 2.f, catRect.y + (iCategory * fontSize), (catRect.z + 2.f) + (12.f + currRect.x), (catRect.y + (iCategory * fontSize)) + (modules.size() * fontSize) + 4.f);
-        RenderUtils::fillRect(nullptr, modsRect, bgColor, 3.f);
+        RenderUtils::fillRect(nullptr, modsRect, bgColor, 6.f);
 
         I = 0;
         for(auto mod : modules) {
@@ -101,7 +101,7 @@ auto TabGui::onRender(void) -> void {
                 auto calcSize = RenderUtils::getTextSize(mod->name, fontSize);
 
                 auto yOff = calcSize.y + (modsRect.y + (iModule * fontSize));
-                RenderUtils::fillRect(nullptr, ImVec4(modsRect.x + 2.f, yOff + 1.f, iModXOff, yOff + 2.f), displayColor, 3.f);
+                RenderUtils::fillRect(nullptr, ImVec4(modsRect.x + 2.f, yOff + 1.f, iModXOff, yOff + 2.f), displayColor, 6.f);
 
             };
 
