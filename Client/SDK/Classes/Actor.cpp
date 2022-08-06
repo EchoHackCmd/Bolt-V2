@@ -1987,3 +1987,135 @@ auto Actor::setSize(float width, float height) -> void {
     return _SetSize(this, width, height);
 
 };
+
+
+//
+
+
+auto Actor::startSpinAttack(void) -> void {
+
+    using StartSpinAttack = void (__thiscall*)(Actor*);
+    auto _StartSpinAttack = (StartSpinAttack)(this->VTable[243]);
+    
+    return _StartSpinAttack(this);
+
+};
+
+auto Actor::setDamageNearbyMobs(bool state) -> void {
+
+    using SetDamageNearbyMobs = void (__thiscall*)(Actor*, bool);
+    auto _SetDamageNearbyMobs = (SetDamageNearbyMobs)(this->VTable[245]);
+    
+    return _SetDamageNearbyMobs(this, state);
+
+};
+
+
+//
+
+
+auto Actor::kill(void) -> void {
+
+    using Kill = void (__thiscall*)(Actor*);
+    auto _Kill = (Kill)(this->VTable[250]);
+
+    return _Kill(this);
+
+};
+
+auto Actor::die(ActorDamageSource* actorDamageSource) -> void {
+
+    using Die = void (__thiscall*)(Actor*, ActorDamageSource*);
+    auto _Die = (Die)(this->VTable[251]);
+
+    return _Die(this, actorDamageSource);
+
+};
+
+auto Actor::shouldDropDeathLoot(void) -> bool {
+
+    using ShouldDropDeathLoot = bool (__thiscall*)(Actor*);
+    auto _ShouldDropDeathLoot = (ShouldDropDeathLoot)(this->VTable[252]);
+
+    return _ShouldDropDeathLoot(this);
+
+};
+
+
+//
+
+
+auto Actor::markHurt(void) -> void {
+
+    using MarkHurt = void (__thiscall*)(Actor*);
+    auto _MarkHurt = (MarkHurt)(this->VTable[269]);
+
+    return _MarkHurt(this);
+
+};
+
+
+//
+
+
+auto Actor::checkInsideBlocks(float f) -> void {
+
+    using CheckInsideBlocks = void (__thiscall*)(Actor*, float);
+    auto _CheckInsideBlocks = (CheckInsideBlocks)(this->VTable[276]);
+
+    return _CheckInsideBlocks(this, f);
+
+};
+
+auto Actor::pushOutOfBlocks(Vec3<float> pos) -> void {
+
+    using PushOutOfBlocks = void (__thiscall*)(Actor*, Vec3<float>*);
+    auto _PushOutOfBlocks = (PushOutOfBlocks)(this->VTable[277]);
+    
+    return _PushOutOfBlocks(this, &pos);
+
+};
+
+
+//
+
+
+auto Actor::updateWaterState(void) -> bool {
+
+    using UpdateWaterState = bool (__thiscall*)(Actor*);
+    auto _UpdateWaterState = (UpdateWaterState)(this->VTable[278]);
+
+    return _UpdateWaterState(this);
+
+};
+
+auto Actor::doWaterSplashEffect(void) -> void {
+
+    using DoWaterSplashEffect = void (__thiscall*)(Actor*);
+    auto _DoWaterSplashEffect = (DoWaterSplashEffect)(this->VTable[279]);
+
+    return _DoWaterSplashEffect(this);
+
+};
+
+auto Actor::spawnTrailBubbles(void) -> void {
+
+    using SpawnTrailBubbles = void (__thiscall*)(Actor*);
+    auto _SpawnTrailBubbles = (SpawnTrailBubbles)(this->VTable[280]);
+
+    return _SpawnTrailBubbles(this);
+
+};
+
+
+//
+
+
+auto Actor::updateInsideBlock(void) -> void {
+
+    using UpdateInsideBlock = void (__thiscall*)(Actor*);
+    auto _UpdateInsideBlock = (UpdateInsideBlock)(this->VTable[281]);
+
+    return _UpdateInsideBlock(this);
+
+};
