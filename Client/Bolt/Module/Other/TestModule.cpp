@@ -96,6 +96,27 @@ auto Draw_Callback(MinecraftUIRenderContext* _this, Font* font, Rect* rect, std:
 
 auto TestModule::onRenderCtx(MinecraftUIRenderContext* ctx) -> void {
 
-    MCRenderer::drawText("Hello World!", Vec2<float>(50.f, 50.f), Color(255.f, 255.f, 255.f), 2.f);
+    auto instance = ctx->clientInstance;
+    auto guidata = (instance != nullptr ? instance->getGuiData() : nullptr);
+
+    if(guidata == nullptr)
+        return;
+
+    auto screen = guidata->screenRes3;
+    
+    auto text = std::string("Bolt V2");
+    auto fontSize = 1.f;
+
+    auto calcWidth = MCRenderer::getTextWidth(text, fontSize);
+    auto rectPos = Vec4<float>(10.f, screen.y - 26.f, 14.f + calcWidth, screen.y - 12.f);
+
+    auto textColor = Color(42.f, 199.f, 123.f);
+    auto bgColor = Color(21.f, 21.f, 21.f, 0.6f);
+    
+    MCRenderer::drawText(text, Vec2<float>(rectPos.x + 2.f, rectPos.y + 2.f), textColor, fontSize);
+    MCRenderer::drawRectangle(rectPos, textColor, 2);
+    MCRenderer::fillRectangle(rectPos, bgColor);
+
+    MCRenderer::flushText();
 
 };
