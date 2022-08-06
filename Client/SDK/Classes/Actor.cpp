@@ -930,9 +930,9 @@ auto _ActorData::isImmobOrProj(void) -> bool {
 //
 
 
-auto Actor::getInfo(void) -> _ActorData* {
+auto Actor::getInfo(void) -> _ActorData {
 
-    return new _ActorData(this);
+    return _ActorData(this);
 
 };
 
@@ -943,26 +943,20 @@ auto Actor::getInfo(void) -> _ActorData* {
 auto Actor::isValidMob(void) -> bool {
 
     auto info = this->getInfo();
-    auto res = false;
 
-    if(info->isHostile() || info->isPassive())
-        res = true;
+    if(info.isHostile() || info.isPassive())
+        return true;
     
-    if(info->getType().first == EntityType::Remote_Player)
-        res = true;
-    
-    delete info;
-    return res;
+    if(info.getType().first == EntityType::Remote_Player)
+        return true;
+
+    return false;
 
 };
 
 auto Actor::getType(void) -> std::pair<uint8_t, std::string> {
     
-    auto info = this->getInfo();
-    auto res = info->getType();
-
-    delete info;
-    return res;
+    return this->getInfo().getType();
 
 };
 
