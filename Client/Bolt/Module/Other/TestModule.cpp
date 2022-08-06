@@ -23,20 +23,6 @@ auto TestModule::onEnable(void) -> void {
 
     //onEnable event - Handled by DLL
 
-    auto instance = Minecraft::getClientInstance();
-    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
-
-    if(player == nullptr)
-        return this->setState(false);
-    
-    auto supplies = player->getSupplies();
-    auto stackA = supplies->getItemStack(0);
-
-    std::ostringstream o;
-    o << std::hex << stackA;
-
-    Utils::debugLog(o.str());
-
 };
 
 auto TestModule::onDisable(void) -> void {
