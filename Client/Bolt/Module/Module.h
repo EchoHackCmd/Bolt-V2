@@ -26,51 +26,15 @@ public:
     virtual auto onDisable(void) -> void {};
 public:
     virtual auto onRender(void) -> void {};
-    virtual auto onGameMode(GameMode*) -> void {};
+    virtual auto onGameMode(class GameMode*) -> void {};
     virtual auto onKey(uint64_t, bool, bool*) -> void {};
+    virtual auto onPacket(class Packet*, bool*) -> void {};
 public:
     virtual auto onGamma(float*) -> void {};
 public:
-    auto getBytes(void* src, unsigned int bytes) -> std::vector<BYTE> {
-
-        auto res = std::vector<BYTE>();
-
-        for(auto I = 0; I < bytes; I++) {
-
-            res.push_back(*(BYTE*)((uintptr_t)(src) + I));
-
-        };
-
-        return res;
-
-    };
-
-    auto nopBytes(void* src, unsigned int bytes) -> void {
-
-        DWORD oldprotect;
-        VirtualProtect(src, bytes, PAGE_EXECUTE_READWRITE, &oldprotect);
-        
-        memset(src, 0x90, bytes);
-
-        VirtualProtect(src, bytes, oldprotect, &oldprotect);
-
-    };
-
-    auto patchBytes(void* src, std::vector<BYTE> bytes) -> void {
-
-        DWORD oldprotect;
-        
-        VirtualProtect(src, bytes.size(), PAGE_EXECUTE_READWRITE, &oldprotect);
-
-        for(auto I = 0; I < bytes.size(); I++) {
-
-            *(BYTE*)((uintptr_t)(src) + I) = bytes.at(I);
-
-        };
-        
-        VirtualProtect(src, bytes.size(), oldprotect, &oldprotect);
-
-    };
+    auto getBytes(void*, unsigned int) -> std::vector<BYTE>;
+    auto patchBytes(void*, std::vector<BYTE>) -> void;
+    auto nopBytes(void*, unsigned int) -> void;
 };
 
 #endif /* CLIENT_BOLT_MODULE_MODULE */
