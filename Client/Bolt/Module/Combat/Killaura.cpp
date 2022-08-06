@@ -15,7 +15,9 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
     
     for(auto [ runtimeId, entity ] : entityMap) {
 
-        if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
+        auto info = _ActorData(entity);
+
+        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
             continue;
         
         if(!entity->isAlive() || !player->canAttack(entity, false))
@@ -39,7 +41,9 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
         if(I >= 2)
             break;
 
-        if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
+        auto info = _ActorData(entity);
+
+        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
             continue;
         
         if(!entity->isAlive() || !player->canAttack(entity, false))
