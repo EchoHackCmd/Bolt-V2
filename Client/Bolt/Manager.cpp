@@ -126,6 +126,7 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 
 #include "Module/Other/TestModule.h"
+#include "Module/Other/Uninject.h"
 
 
 auto Manager::initModules(void) -> void {
@@ -161,6 +162,7 @@ auto Manager::initModules(void) -> void {
 	/* Other */
 
 	
+	new Uninject(this->categories[CategoryType::Other]);
 	new TestModule(this->categories[CategoryType::Other]);
 	
 
