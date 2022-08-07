@@ -13,8 +13,8 @@ public:
     Inventory* inventory;  //0x00C0
 private:
     virtual ~PlayerInventory(void);
-private:
-    virtual auto Function0(void) -> void;
+public:
+    virtual auto selectedHotbarSlot(int) -> int; //this should be it unless i have autism
 public:
     virtual auto releaseResources(void) -> void;
     virtual auto getContainerSize(void) -> __int64;

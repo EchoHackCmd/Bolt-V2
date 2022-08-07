@@ -2,6 +2,7 @@
 #define CLIENT_CLIENT
 
 #include "Bolt/Manager.h"
+#include <string>
 
 class Client {
 public:

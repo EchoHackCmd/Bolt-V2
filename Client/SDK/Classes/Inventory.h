@@ -6,7 +6,7 @@
 struct ContainerContentChangeListener;
 class ItemStack;
 class BlockSource;
-
+class Item;
 class Inventory {
 private:
     virtual ~Inventory(void);
