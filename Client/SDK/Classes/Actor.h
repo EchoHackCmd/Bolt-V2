@@ -139,11 +139,17 @@ public:
     auto isOnFire(void) -> bool;
     auto isOnHotBlock(void) -> bool;
 public:
+    auto isCreativeModeAllowed(void) -> bool;
+public:
     auto isSurfaceMob(void) -> bool;
+    auto isTargetable(void) -> bool;
+    auto isLocalPlayer(void) -> bool;
     auto isRemotePlayer(void) -> bool;
+    auto isPlayer(void) -> bool;
 public:
     auto canAttack(Actor*, bool) -> bool;
     auto setTarget(Actor*) -> void;
+    auto isValidTarget(Actor*) -> bool;
 public:
     auto getEquipmentCount(void) -> __int64;
 public:
