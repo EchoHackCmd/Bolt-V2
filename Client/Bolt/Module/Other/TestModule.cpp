@@ -51,46 +51,17 @@ auto TestModule::onGameMode(GameMode* GM) -> void {
 
     //onGameMode event - Handled by GameMode::tick Hook
 
-    auto instance = Minecraft::getClientInstance();
-    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
-
-    if(player == nullptr)
-        return;
-    
-    //
-
 };
 
 auto TestModule::onPacket(Packet* packet, bool* cancel) -> void {
 
     //onPacket event - Handled by LoopbackPacketSender::send Hook
 
-    if(packet->getId() == PacketType::MovePlayer) {
-
-        Utils::debugLog("!");
-
-    };
-
 };
 
 auto TestModule::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
     //onKey event - Handled by WINAPI Key Hook
-
-};
-
-bool hook = false;
-
-typedef void (__thiscall* Draw) (MinecraftUIRenderContext*, Font*, Rect*, std::string*, Color*, float, TextAlignment*, TextMeasureData*, CaretMeasureData*);
-Draw _Draw;
-
-bool once = false;
-
-auto Draw_Callback(MinecraftUIRenderContext* _this, Font* font, Rect* rect, std::string* text, Color* color, float textSize, TextAlignment* textAlignment, TextMeasureData* textMeasureData, CaretMeasureData* caretMeasureData) -> void {
-
-    //
-
-    _Draw(_this, font, rect, text, color, textSize, textAlignment, textMeasureData, caretMeasureData);
 
 };
 
