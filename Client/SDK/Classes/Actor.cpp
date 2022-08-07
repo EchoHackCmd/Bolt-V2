@@ -1456,12 +1456,43 @@ auto Actor::isOnHotBlock(void) -> bool {
 //
 
 
+auto Actor::isCreativeModeAllowed(void) -> bool {
+
+    using IsCreativeModeAllowed = bool (__thiscall*)(Actor*);
+    auto _IsCreativeModeAllowed = (IsCreativeModeAllowed)(this->VTable[105]);
+
+    return _IsCreativeModeAllowed(this);
+
+};
+
+
+//
+
+
 auto Actor::isSurfaceMob(void) -> bool {
 
     using IsSurfaceMob = bool (__thiscall*)(Actor*);
     auto _IsSurfaceMob = (IsSurfaceMob)(this->VTable[106]);
 
     return _IsSurfaceMob(this);
+
+};
+
+auto Actor::isTargetable(void) -> bool {
+
+    using IsTargetable = bool (__thiscall*)(Actor*);
+    auto _IsTargetable = (IsTargetable)(this->VTable[107]);
+
+    return _IsTargetable(this);
+
+};
+
+auto Actor::isLocalPlayer(void) -> bool {
+
+    using IsLocalPlayer = bool (__thiscall*)(Actor*);
+    auto _IsLocalPlayer = (IsLocalPlayer)(this->VTable[108]);
+
+    return _IsLocalPlayer(this);
 
 };
 
@@ -1472,6 +1503,15 @@ auto Actor::isRemotePlayer(void) -> bool {
     auto _IsRemotePlayer = (IsRemotePlayer)(this->VTable[109]);
 
     return _IsRemotePlayer(this);
+
+};
+
+auto Actor::isPlayer(void) -> bool {
+
+    using IsPlayer = bool (__thiscall*)(Actor*);
+    auto _IsPlayer = (IsPlayer)(this->VTable[110]);
+
+    return _IsPlayer(this);
 
 };
 
@@ -1495,6 +1535,15 @@ auto Actor::setTarget(Actor* entity) -> void {
     auto _SetTarget = (SetTarget)(this->VTable[113]);
 
     return _SetTarget(this, entity);
+
+};
+
+auto Actor::isValidTarget(Actor* entity) -> bool {
+
+    using IsValidTarget = bool (__thiscall*)(Actor*, Actor*);
+    auto _IsValidTarget = (IsValidTarget)(this->VTable[114]);
+
+    return _IsValidTarget(this, entity);
 
 };
 
