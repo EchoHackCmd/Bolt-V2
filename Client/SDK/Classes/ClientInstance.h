@@ -18,6 +18,8 @@ public:
 public:
     auto grabMouse(void) -> void;
     auto releaseMouse(void) -> void;
+    auto refocusMouse(void) -> void;
+
 };
 
 #endif /* CLIENT_SDK_CLASSES_CLIENTINSTANCE */
