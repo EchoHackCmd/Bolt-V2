@@ -26,8 +26,6 @@ auto ClientInstance::getLocalPlayer(void) -> Player* {
 };
 
 
-//
-
 
 auto ClientInstance::grabMouse(void) -> void {
     
@@ -44,5 +42,14 @@ auto ClientInstance::releaseMouse(void) -> void {
     auto _ReleaseMouse = (ReleaseMouse)(this->VTable[290]);
 
     _ReleaseMouse(this);
+
+};
+
+auto ClientInstance::refocusMouse(void) -> void {
+    
+    using refocusMouse = void (__thiscall*)(ClientInstance*);
+    auto _refocusMouse = (refocusMouse)(this->VTable[291]);
+
+    _refocusMouse(this);
 
 };

@@ -8,6 +8,8 @@ private:
     virtual ~LoopbackPacketSender();
 public:
     virtual auto send(Packet*) -> void;
+    virtual auto sendToServer(Packet* packet) -> void; //cba to finish
+
 };
 
 #endif /* CLIENT_SDK_CLASSES_LOOPBACKPACKETSENDER */
