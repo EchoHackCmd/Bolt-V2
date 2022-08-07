@@ -113,9 +113,7 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 
 /* Player */
 
-#include "Module/Player/AutoTool.h"
-#include "Module/Player/AutoWeapon.h"
-
+//
 
 /* Render */
 
@@ -152,10 +150,9 @@ auto Manager::initModules(void) -> void {
 
 	
 	/* Player */
-
 	
-	//new AutoTool(this->categories[CategoryType::Player]);
-	new AutoWeapon(this->categories[CategoryType::Player]);
+
+	//
 
 	
 	/* Render */
