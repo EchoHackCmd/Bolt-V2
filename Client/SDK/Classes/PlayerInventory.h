@@ -3,36 +3,25 @@
 
 #include "Inventory.h"
 
-class ItemStack;
-class ItemInstance;
-
 class PlayerInventory {
-private:
-    char pad_0x0008[0xB8]; //0x0008
 public:
-    Inventory* inventory;  //0x00C0
-private:
-    virtual ~PlayerInventory(void);
-public:
-    virtual auto selectedHotbarSlot(int) -> int; //this should be it unless i have autism
-public:
-    virtual auto releaseResources(void) -> void;
-    virtual auto getContainerSize(void) -> __int64;
-    virtual auto getFilteredContainerSize(void) -> __int64;
-private:
-    virtual auto Function4(void) -> void;
-    virtual auto getContainerWeakRef(void) -> void*;
-public:
-    virtual auto getItemStack(int) -> ItemStack*;
-private:
-    virtual auto getTagRegistry(void) -> void*;
-public:
-    virtual auto getItemInstance(int) -> ItemInstance*;
-private:
-    virtual auto Function9(void) -> void;
-    virtual auto Function10(void) -> void;
-public:
-    virtual auto setItem(int, ItemStack*) -> void;
+    inline Inventory* getInventory() {
+        
+        return *reinterpret_cast<Inventory**>((uintptr_t)(this) + 0xC0);
+
+    };
+
+    inline int32_t getSelectedSlot() {
+        
+        return *reinterpret_cast<int32_t*>((uintptr_t)(this) + 0x10);
+
+    };
+
+    inline void setSelectedSlot(int32_t slot) {
+        
+        *reinterpret_cast<int32_t*>((uintptr_t)(this) + 0x10) = slot;
+
+    };
 };
 
 #endif /* CLIENT_SDK_CLASSES_PLAYERINVENTORY */
