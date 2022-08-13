@@ -36,9 +36,18 @@ auto TestModule::onDisable(void) -> void {
 
 
 auto TestModule::onRender(void) -> void {
+auto textColor = ImColor(255.f, 255.f, 255.f, 1.f);
+auto otherclr = ImColor(170.f, 170.f, 170.f, 1.0f);
+	std::string build = "Build - ";
+#ifdef _DEBUG
+	std::string buildType = "Developer";
+#else
+	std::string buildType = "Public";
+#endif
 
-    //onRender event - Handled by SwapChain Hook
-
+//build info yes its shitty code but w/e
+		RenderUtils::drawText(nullptr, ImVec2(1705, 975), build, 30.f, otherclr);
+		RenderUtils::drawText(nullptr, ImVec2(1780, 975), buildType, 30.f, textColor);
 };
 
 auto TestModule::onGamma(float* gamma) -> void {
@@ -67,27 +76,5 @@ auto TestModule::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
 auto TestModule::onRenderCtx(MinecraftUIRenderContext* ctx) -> void {
 
-    auto instance = ctx->clientInstance;
-    auto guidata = (instance != nullptr ? instance->getGuiData() : nullptr);
-
-    if(guidata == nullptr)
-        return;
-
-    auto screen = guidata->screenRes3;
-    
-    auto text = std::string("Bolt V2");
-    auto fontSize = 1.f;
-
-    auto calcWidth = MCRenderer::getTextWidth(text, fontSize);
-    auto rectPos = Vec4<float>(10.f, screen.y - 26.f, 14.f + calcWidth, screen.y - 12.f);
-
-    auto textColor = Color(42.f, 199.f, 123.f);
-    auto bgColor = Color(21.f, 21.f, 21.f, 0.6f);
-    
-    MCRenderer::drawText(text, Vec2<float>(rectPos.x + 2.f, rectPos.y + 2.f), textColor, fontSize);
-    MCRenderer::drawRectangle(rectPos, textColor, 2);
-    MCRenderer::fillRectangle(rectPos, bgColor);
-
-    MCRenderer::flushText();
 
 };
