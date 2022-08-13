@@ -37,10 +37,10 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
 
         if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
             continue;
-        
         if(!entity->isAlive() || !player->canAttack(entity, false))
             continue;
-        
+         if(!entity->canSee()) //raytracing can avoid kicks or bans on some servers
+            continue;
         auto dist = player->getPos().distanceTo(entity->getPos());
         
         if(dist == distances.at(0) || dist == (distances.size() > 1 ? distances.at(1) : distances.at(0))) {

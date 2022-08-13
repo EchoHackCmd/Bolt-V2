@@ -8,7 +8,7 @@ auto FluxSwing::onEnable(void) -> void {
 
 	if(this->patches.empty()) {
 
-		auto fluxSwingAddr = Utils::findSig("E8 ? ? ? ? 41 0F 28 C0 F3 41 0F 5C C1");
+		auto fluxSwingAddr = Utils::findSig("e8 ? ? ? ? f3 44 0f 59 35 ? ? ? ? f3 0f 10 15");
 		auto bytes = getBytes((void*)fluxSwingAddr, 5);
 
 		this->patches[fluxSwingAddr] = bytes;
