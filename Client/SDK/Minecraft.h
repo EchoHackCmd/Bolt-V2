@@ -10,5 +10,5 @@ public:
     static auto setClientInstance(ClientInstance*) -> void;
     static auto getClientInstance(void) -> ClientInstance*;
 };
-
+extern Minecraft Game;
 #endif /* CLIENT_SDK_MINECRAFT */

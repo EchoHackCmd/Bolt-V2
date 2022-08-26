@@ -30,15 +30,13 @@ auto Hitbox::onGameMode(GameMode* GM) -> void {
 auto Hitbox::onDisable(void) -> void {
 
     auto mgr = this->category->manager;
-    auto instance = Minecraft::getClientInstance();
-    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
 
-    if(player == nullptr)
+    if(Game.getClientInstance()->getLocalPlayer() == nullptr)
         return this->sizes.clear();
     
     for(auto [ runtimeId, entity] : mgr->entityMap) {
 
-        if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
+        if(Game.getClientInstance()->getLocalPlayer()->getRuntimeId() == runtimeId || !entity->isValidMob())
             continue;
         
         auto type = entity->getEntityTypeId();
