@@ -1,7 +1,7 @@
 #include "Minecraft.h"
 
 ClientInstance* Minecraft::clientInstance = nullptr;
-
+Minecraft Game;
 auto Minecraft::setClientInstance(ClientInstance* i) -> void {
 
     if(i == nullptr)
