@@ -11,15 +11,13 @@ auto Hitbox::onGameMode(GameMode* GM) -> void {
 
     for(auto [ runtimeId, entity ] : mgr->entityMap) {
 
-        auto info = _ActorData(entity);
-
-        if(player->getRuntimeId() == runtimeId || (info.isItem() || info.isBlock() || info.isImmobOrProj()))
+        if(player->getRuntimeId() == runtimeId || !entity->isAlive() || !player->canAttack(entity, false))
             continue;
         
         auto type = entity->getEntityTypeId();
 
         if(!this->sizes.contains(type))
-            this->sizes[type] = entity->getSize();
+            this->sizes[type] = *entity->getSize();
         
         entity->setSize(this->size.x, this->size.y);
 
@@ -30,6 +28,7 @@ auto Hitbox::onGameMode(GameMode* GM) -> void {
 auto Hitbox::onDisable(void) -> void {
 
     auto mgr = this->category->manager;
+    
     auto instance = Minecraft::getClientInstance();
     auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
 
@@ -38,7 +37,7 @@ auto Hitbox::onDisable(void) -> void {
     
     for(auto [ runtimeId, entity] : mgr->entityMap) {
 
-        if(player->getRuntimeId() == runtimeId || !entity->isValidMob())
+        if(player->getRuntimeId() == runtimeId || !entity->isAlive() || !player->canAttack(entity, false))
             continue;
         
         auto type = entity->getEntityTypeId();

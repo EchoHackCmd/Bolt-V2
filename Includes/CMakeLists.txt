@@ -1,3 +1,4 @@
+add_subdirectory(GitClone)
 add_subdirectory(minhook)
 add_subdirectory(imgui)
 add_subdirectory(kiero)
