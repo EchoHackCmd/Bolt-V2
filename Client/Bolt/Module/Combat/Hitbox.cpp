@@ -36,7 +36,7 @@ auto Hitbox::onDisable(void) -> void {
         return this->sizes.clear();
     
     for(auto [ runtimeId, entity] : mgr->entityMap) {
-
+        
         if(player->getRuntimeId() == runtimeId || !entity->isAlive() || !player->canAttack(entity, false))
             continue;
         
