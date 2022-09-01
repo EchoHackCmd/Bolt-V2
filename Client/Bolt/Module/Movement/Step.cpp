@@ -5,12 +5,19 @@
 #include "../../Category/Category.h"
 
 auto Step::onGameMode(GameMode* GM) -> void {
+    
+    auto player = GM->player;
+    *player->getStepHeight() = 2.5625f;
 
-    *Game.getClientInstance()->getLocalPlayer()->getStepHeight() = 2.5625f;
 };
 
 auto Step::onDisable(void) -> void {
-    if(Game.getClientInstance()->getLocalPlayer() == nullptr) return; 
-//looks cleaner idk just me? ok then.
-    *Game.getClientInstance()->getLocalPlayer()->getStepHeight() = 0.5625f;
+    
+    auto instance = Minecraft::getClientInstance();
+    auto player = (instance != nullptr ? instance->getLocalPlayer() : nullptr);
+
+    if(player == nullptr)
+        return;
+    
+    *player->getStepHeight() = 0.5625f;
 };
