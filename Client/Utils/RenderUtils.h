@@ -1,6 +1,7 @@
 #ifndef CLIENT_UTILS_RENDERUTILS
 #define CLIENT_UTILS_RENDERUTILS
 
+#include <Minecraft.h>
 #include <filesystem>
 #include <functional>
 #include <Windows.h>

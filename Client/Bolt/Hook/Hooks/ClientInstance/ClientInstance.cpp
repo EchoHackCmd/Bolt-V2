@@ -11,7 +11,6 @@ RenderContext _RenderContext;
 auto RenderContext_Callback( void* a1, MinecraftUIRenderContext* ctx ) -> void {
 
     Minecraft::setClientInstance(ctx->clientInstance);
-    MCRenderer::setContext(ctx);
 
     for(auto [ type, category ] : ciMgr->categories) {
 
