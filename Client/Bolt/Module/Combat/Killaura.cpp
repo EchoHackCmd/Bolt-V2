@@ -19,6 +19,9 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
 
     for(auto [ runtimeId, entity ] : entityMap) {
 
+        if(!entity->isValidMob())
+            continue;
+        
         if(player->getRuntimeId() == runtimeId || !entity->isAlive() || !player->canAttack(entity, false))
             continue;
         
@@ -35,6 +38,9 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
     std::sort(dists.begin(), dists.end());
 
     for(auto [ runtimeId, entity ] : entityMap) {
+
+        if(!entity->isValidMob())
+            continue;
 
         if(player->getRuntimeId() == runtimeId || !entity->isAlive() || !player->canAttack(entity, false))
             continue;
