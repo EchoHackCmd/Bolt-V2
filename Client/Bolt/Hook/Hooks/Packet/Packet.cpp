@@ -32,7 +32,7 @@ auto Packet_Hook::init(void) -> void {
 
     phMgr = this->manager;
 
-    auto sig = Utils::findSig("48 89 5C 24 ? 57 48 83 EC ? 48 8B 41 ? 48 8B ? 48 8B FA 48 8B 48");
+    auto sig = Utils::findSig("48 89 5C 24 ? 57 48 83 EC ? 48 8B ? 48 8B ? 48 8B 49 ? ? ? ? ? ? ? ? ? 48 8B");
 
     if(!sig)
         return Utils::debugLog("[ LoopbackPacketSender::send Hook ] Failed to find Signature needed for Hook!");
