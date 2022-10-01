@@ -33,7 +33,7 @@ auto initFonts(void) -> void {
     auto& io = ImGui::GetIO();
     
     /* DroidSans */
-    scMgr->fonts["DroidSans"] = io.Fonts->AddFontFromMemoryCompressedTTF(DroidSans_compressed_data, DroidSans_compressed_size, 16.f);
+    scMgr->fonts["DroidSans"] = io.Fonts->AddFontFromMemoryCompressedTTF(DroidSans_compressed_data, DroidSans_compressed_size, 48.f);
 
 };
 
