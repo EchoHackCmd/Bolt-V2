@@ -107,6 +107,7 @@ auto Manager::getCategory(CategoryType type) -> std::pair<std::string, Category*
 /* Movement */
 
 
+#include "Module/Movement/Jetpack.h"
 #include "Module/Movement/NoSlow.h"
 #include "Module/Movement/Step.h"
 
@@ -145,6 +146,7 @@ auto Manager::initModules(void) -> void {
 	/* Movement */
 
 	
+	new Jetpack(this->categories[CategoryType::Movement]);
 	new NoSlow(this->categories[CategoryType::Movement]);
 	new Step(this->categories[CategoryType::Movement]);
 
