@@ -6,6 +6,12 @@
 
 auto Killaura::onGameMode(GameMode* GM) -> void {
 
+    if(std::chrono::system_clock::now() < (this->time + std::chrono::milliseconds(this->msDelay)))
+        return;
+
+    this->time = std::chrono::system_clock::now();
+    this->cpt = 0;
+
     auto mgr = this->category->manager;
     auto entityMap = mgr->entityMap;
     
@@ -19,7 +25,7 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
 
     for(auto [ runtimeId, entity ] : entityMap) {
 
-        if(!entity->isValidMob())
+        if(!entity->isValidMob() || entity->isInvisible())
             continue;
         
         if(player->getRuntimeId() == runtimeId || !entity->isAlive() || !player->canAttack(entity, false))
@@ -37,9 +43,13 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
     
     std::sort(dists.begin(), dists.end());
 
+    auto hits = 0;
     for(auto [ runtimeId, entity ] : entityMap) {
 
-        if(!entity->isValidMob())
+        if(hits > this->cpt)
+            break;
+
+        if(!entity->isValidMob() || entity->isInvisible())
             continue;
 
         if(player->getRuntimeId() == runtimeId || !entity->isAlive() || !player->canAttack(entity, false))
@@ -47,11 +57,12 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
         
         auto dist = (*entity->getPos()).distanceTo(myPos);
         
-        if(dist == dists.at(0) || dist == (dists.size() > 1 ? dists.at(1) : dists.at(0))) {
+        if(dist == dists.at(0)) {
 
+            dists.erase(dists.begin());
             GM->attack(entity);
             player->swing();
-            break;
+            hits++;
 
         };
 
